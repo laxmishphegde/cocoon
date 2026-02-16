@@ -37,7 +37,7 @@ import org.apache.cocoon.xml.AttributesImpl;
 import org.apache.cocoon.xml.XMLUtils;
 import org.apache.cocoon.environment.Request;
 
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;

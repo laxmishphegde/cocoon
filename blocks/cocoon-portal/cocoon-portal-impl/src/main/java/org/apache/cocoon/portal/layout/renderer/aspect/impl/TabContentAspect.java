@@ -36,7 +36,7 @@ import org.apache.cocoon.portal.om.LayoutInstance;
 import org.apache.cocoon.portal.om.NamedItem;
 import org.apache.cocoon.portal.om.LayoutFeatures.RenderInfo;
 import org.apache.cocoon.portal.util.XMLUtils;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;

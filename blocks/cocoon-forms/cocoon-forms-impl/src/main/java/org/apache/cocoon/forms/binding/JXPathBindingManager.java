@@ -33,7 +33,6 @@ import org.apache.cocoon.forms.datatype.DatatypeManager;
 import org.apache.cocoon.forms.util.DomHelper;
 import org.apache.cocoon.util.location.LocationAttributes;
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Document;
@@ -171,8 +170,7 @@ public class JXPathBindingManager implements BindingManager {
                 try {
                     context.setSuperBinding(context.getLocalLibrary().getBinding(configElm.getAttribute("extends")));
                 } catch (LibraryException e) {
-                    // throw new RuntimeException("Error extending binding! (at "+DomHelper.getLocation(configElm)+")", e);
-                    throw new NestableRuntimeException("Error extending binding! (at " + DomHelper.getLocation(configElm) + ")", e);
+                    throw new RuntimeException("Error extending binding! (at " + DomHelper.getLocation(configElm) + ")", e);
                 }
             } else {
                 context.setSuperBinding(null);

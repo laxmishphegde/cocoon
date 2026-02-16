@@ -26,7 +26,7 @@ import org.apache.cocoon.forms.event.WidgetEventMulticaster;
 import org.apache.cocoon.forms.formmodel.library.Library;
 import org.apache.cocoon.forms.formmodel.library.LibraryManager;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * The {@link WidgetDefinition} part of a Form widget, see {@link Form} for more information.

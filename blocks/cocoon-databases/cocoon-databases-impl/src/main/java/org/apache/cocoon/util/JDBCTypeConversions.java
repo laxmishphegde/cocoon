@@ -40,7 +40,7 @@ import java.util.Map;
 
 import org.apache.avalon.framework.configuration.Configuration;
 import org.apache.cocoon.servlet.multipart.Part;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.excalibur.source.Source;
 
 /**
@@ -213,7 +213,7 @@ public class JDBCTypeConversions {
             value = set.getArray(dbcol); // new Integer(set.getInt(dbcol));
             break;
         case Types.BIT:
-            value = BooleanUtils.toBooleanObject(set.getBoolean(dbcol));
+            value = Boolean.valueOf(set.getBoolean(dbcol));
             break;
         case Types.STRUCT:
             value = set.getObject(dbcol);
@@ -531,9 +531,9 @@ public class JDBCTypeConversions {
             if (value instanceof Boolean) {
                 bo = (Boolean)value;
             } else if (value instanceof Number) {
-                bo = BooleanUtils.toBooleanObject(((Number) value).intValue()==1);
+                bo = Boolean.valueOf(((Number) value).intValue()==1);
             } else {
-                bo = BooleanUtils.toBooleanObject(value.toString());
+                bo = Boolean.valueOf(value.toString());
             }
             statement.setBoolean(position, bo.booleanValue());
             break;

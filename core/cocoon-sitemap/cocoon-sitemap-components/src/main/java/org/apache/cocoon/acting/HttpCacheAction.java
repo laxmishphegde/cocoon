@@ -24,13 +24,14 @@ import org.apache.cocoon.environment.ObjectModelHelper;
 import org.apache.cocoon.environment.Redirector;
 import org.apache.cocoon.environment.Response;
 import org.apache.cocoon.environment.SourceResolver;
-import org.apache.commons.lang.time.DateUtils;
-import org.apache.commons.lang.time.FastDateFormat;
+import org.apache.commons.lang3.time.DateUtils;
+import org.apache.commons.lang3.time.FastDateFormat;
 
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * This action adds the <code>Last-Modified</code>, <code>Expires</code> and
@@ -99,7 +100,7 @@ public class HttpCacheAction extends AbstractConfigurableAction implements Threa
         super.configure(configuration);
 
         // RFC-822 Date with a GMT based time zone
-        this.formatter = FastDateFormat.getInstance("EEE, dd MMM yyyy kk:mm:ss zzz", DateUtils.UTC_TIME_ZONE);
+        this.formatter = FastDateFormat.getInstance("EEE, dd MMM yyyy kk:mm:ss zzz", TimeZone.getTimeZone("UTC"));
         this.days = configuration.getChild("days").getValueAsInteger(0);
         this.hours = configuration.getChild("hours").getValueAsInteger(0);
         this.minutes = configuration.getChild("minutes").getValueAsInteger(0);
@@ -110,7 +111,7 @@ public class HttpCacheAction extends AbstractConfigurableAction implements Threa
                    Map objectModel, String source, Parameters parameters)
     throws Exception {
         Response response = ObjectModelHelper.getResponse(objectModel);
-        Calendar calendar = Calendar.getInstance(DateUtils.UTC_TIME_ZONE);
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         Map values = new HashMap(3);
 
         /* Get the current time and output as the last modified header */

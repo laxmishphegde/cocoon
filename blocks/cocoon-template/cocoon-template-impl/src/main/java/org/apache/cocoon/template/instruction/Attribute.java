@@ -30,7 +30,7 @@ import org.apache.cocoon.template.xml.AttributeAwareXMLConsumer;
 import org.apache.cocoon.xml.ContentHandlerWrapper;
 import org.apache.cocoon.xml.XMLConsumer;
 import org.apache.cocoon.xml.util.NamespacesTable;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xml.serialize.TextSerializer;
 import org.xml.sax.Attributes;
 import org.xml.sax.Locator;

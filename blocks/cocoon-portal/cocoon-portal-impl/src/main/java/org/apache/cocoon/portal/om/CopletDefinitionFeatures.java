@@ -16,7 +16,7 @@
  */
 package org.apache.cocoon.portal.om;
 
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * This class contains constants and utility methods for the standard features

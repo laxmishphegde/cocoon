@@ -16,7 +16,6 @@
  */
 package org.apache.cocoon.util;
 
-import org.apache.commons.lang.enums.ValuedEnum;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.impl.SimpleLog;
 
@@ -51,54 +50,78 @@ public class Deprecation {
         return log;
     }
 
-    private static final int DEBUG_VALUE = 0;
-    private static final int INFO_VALUE = 1;
-    private static final int WARN_VALUE = 2;
-    private static final int ERROR_VALUE = 3;
-    private static final int FATAL_VALUE = 4;
-
     /**
-     * Debug deprecation messages indicate features that are no more considered "current"
-     * or "best practice", but for which no removal is currently foreseen.
+     * Log levels for deprecation messages. Converted from ValuedEnum to standard Java enum
+     * for commons-lang3 compatibility.
      */
-    public static final LogLevel DEBUG = new LogLevel("DEBUG", DEBUG_VALUE);
+    public enum LogLevel {
+        /**
+         * Debug deprecation messages indicate features that are no more considered "current"
+         * or "best practice", but for which no removal is currently foreseen.
+         */
+        DEBUG("DEBUG", 0),
 
-    /**
-     * Info deprecation messages indicate features that are no more considered "current"
-     * or "best practice", and that will probably be removed in future releases.
-     */
-    public static final LogLevel INFO = new LogLevel("INFO", INFO_VALUE);
+        /**
+         * Info deprecation messages indicate features that are no more considered "current"
+         * or "best practice", and that will probably be removed in future releases.
+         */
+        INFO("INFO", 1),
 
-    /**
-     * Warning deprecation messages indicate features that will be removed in the next major
-     * version (e.g. 2.1.x --> 2.2.0). Such features should not be used if the application is
-     * planned to be migrated to newer Cocoon versions.
-     */
-    public static final LogLevel WARN = new LogLevel("WARN", WARN_VALUE);
+        /**
+         * Warning deprecation messages indicate features that will be removed in the next major
+         * version (e.g. 2.1.x --> 2.2.0). Such features should not be used if the application is
+         * planned to be migrated to newer Cocoon versions.
+         */
+        WARN("WARN", 2),
 
-    /**
-     * Error deprecation messages indicate features that will be removed in the next minor
-     * version (e.g. 2.1.6 --> 2.1.7). Although still functional, users are stronly invited to
-     * not use them.
-     */
-    public static final LogLevel ERROR = new LogLevel("ERROR", ERROR_VALUE);
+        /**
+         * Error deprecation messages indicate features that will be removed in the next minor
+         * version (e.g. 2.1.6 --> 2.1.7). Although still functional, users are stronly invited to
+         * not use them.
+         */
+        ERROR("ERROR", 3),
 
-    /**
-     * Fatal deprecation messages indicate features that used to exist but have been removed
-     * in the current version. Logging such a message always throws a {@link DeprecationException}.
-     */
-    public static final LogLevel FATAL = new LogLevel("FATAL", FATAL_VALUE);
+        /**
+         * Fatal deprecation messages indicate features that used to exist but have been removed
+         * in the current version. Logging such a message always throws a {@link DeprecationException}.
+         */
+        FATAL("FATAL", 4);
 
-    
-    public static final class LogLevel extends ValuedEnum {
+        private final String text;
+        private final int value;
+
         private LogLevel(String text, int value) {
-            super(text, value);
+            this.text = text;
+            this.value = value;
         }
-        
+
+        public String getText() {
+            return text;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
         public static LogLevel getLevel(String level) {
-            return (LogLevel)ValuedEnum.getEnum(LogLevel.class, level);
+            if (level == null) {
+                return null;
+            }
+            for (LogLevel logLevel : values()) {
+                if (logLevel.text.equalsIgnoreCase(level)) {
+                    return logLevel;
+                }
+            }
+            return null;
         }
     }
+
+    // Constants for convenience and backwards compatibility
+    private static final int DEBUG_VALUE = LogLevel.DEBUG.getValue();
+    private static final int INFO_VALUE = LogLevel.INFO.getValue();
+    private static final int WARN_VALUE = LogLevel.WARN.getValue();
+    private static final int ERROR_VALUE = LogLevel.ERROR.getValue();
+    private static final int FATAL_VALUE = LogLevel.FATAL.getValue();
 
 
     public static void setLogger(Log newLogger) {
@@ -110,7 +133,7 @@ public class Deprecation {
     public static void setForbiddenLevel(LogLevel level) {
         // If null, reset to the default level
         if (level == null) {
-            level = ERROR;
+            level = LogLevel.ERROR;
         }
         ((LoggerWrapper) logger).setForbiddenLevel(level);
     }

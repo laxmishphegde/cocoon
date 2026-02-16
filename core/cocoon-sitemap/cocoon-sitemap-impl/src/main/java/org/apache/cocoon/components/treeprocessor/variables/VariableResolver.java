@@ -28,7 +28,7 @@ import org.apache.cocoon.sitemap.SitemapParameters;
 import org.apache.cocoon.util.location.Locatable;
 import org.apache.cocoon.util.location.Location;
 
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 /**
  * Utility class for handling {...} pattern substitutions in sitemap statements.

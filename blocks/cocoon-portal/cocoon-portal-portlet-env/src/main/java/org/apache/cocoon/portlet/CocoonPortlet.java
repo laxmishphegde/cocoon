@@ -704,7 +704,7 @@ public class CocoonPortlet extends GenericPortlet {
             // fill from the portlet parameters
             SettingsHelper.fill(settings, this.config);
             if ( settings.getWorkDirectory() == null ) {
-                final File workDir = (File)this.config.getPortletContext().getAttribute("javax.servlet.context.tempdir");
+                final File workDir = (File)this.config.getPortletContext().getAttribute("jakarta.servlet.context.tempdir");
                 settings.setWorkDirectory(workDir.getAbsolutePath());
             }
         }

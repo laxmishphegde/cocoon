@@ -35,7 +35,7 @@ import net.sf.ehcache.store.MemoryStoreEvictionPolicy;
 
 import org.apache.cocoon.configuration.Settings;
 import org.apache.cocoon.util.IOUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.excalibur.store.Store;

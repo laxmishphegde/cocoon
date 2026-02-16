@@ -30,7 +30,7 @@ import org.apache.cocoon.components.search.LuceneXMLIndexer;
 import org.apache.cocoon.configuration.Settings;
 import org.apache.cocoon.environment.SourceResolver;
 import org.apache.cocoon.spring.configurator.WebAppContextUtils;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.excalibur.source.SourceValidity;
 import org.apache.excalibur.source.impl.validity.NOPValidity;
 import org.apache.lucene.analysis.Analyzer;

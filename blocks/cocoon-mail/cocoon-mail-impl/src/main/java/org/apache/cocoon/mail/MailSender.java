@@ -16,8 +16,8 @@
  */
 package org.apache.cocoon.mail;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.AddressException;
 
 import org.apache.cocoon.environment.SourceResolver;
 

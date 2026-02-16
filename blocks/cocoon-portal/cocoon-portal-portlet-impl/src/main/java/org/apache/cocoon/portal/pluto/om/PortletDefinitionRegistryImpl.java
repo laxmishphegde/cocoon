@@ -30,7 +30,7 @@ import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.apache.avalon.framework.parameters.ParameterException;
 import org.apache.avalon.framework.parameters.Parameterizable;
@@ -49,7 +49,7 @@ import org.apache.cocoon.portal.om.CopletType;
 import org.apache.cocoon.portal.pluto.deployment.Deployer;
 import org.apache.cocoon.portal.pluto.deployment.WebApplicationRewriter;
 import org.apache.cocoon.thread.RunnableManager;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.excalibur.source.Source;
 import org.apache.excalibur.source.SourceResolver;
 import org.apache.excalibur.xml.EntityResolver;

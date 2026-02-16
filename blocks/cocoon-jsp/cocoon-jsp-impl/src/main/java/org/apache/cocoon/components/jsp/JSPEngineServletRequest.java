@@ -22,11 +22,11 @@ import java.security.Principal;
 import java.util.Enumeration;
 import java.util.Locale;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Stub implementation of HttpServletRequest.
@@ -34,9 +34,9 @@ import javax.servlet.http.HttpSession;
 public class JSPEngineServletRequest implements HttpServletRequest {
 
     /** The servlet include path. */
-    private static final String INC_SERVLET_PATH = "javax.servlet.include.servlet_path";
+    private static final String INC_SERVLET_PATH = "jakarta.servlet.include.servlet_path";
     /** The servlet request uri, needed for Resin. */
-    private static final String INC_REQUEST_URI = "javax.servlet.include.request_uri";
+    private static final String INC_REQUEST_URI = "jakarta.servlet.include.request_uri";
     
     private final HttpServletRequest request;
     private final String jspFile;

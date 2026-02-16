@@ -16,25 +16,23 @@
  */
 package org.apache.cocoon.forms.samples;
 
-import org.apache.commons.lang.enums.Enum;
-
 /**
- * Test apache enum class.
- * 
+ * Test Java enum class.
+ *
  * @version $Id$
  */
-public class PreferredContact extends Enum {
+public enum PreferredContact {
 
-    public static final PreferredContact EMAIL = new PreferredContact("EMAIL");
-    public static final PreferredContact FAX = new PreferredContact("FAX");
-    public static final PreferredContact PHONE = new PreferredContact("PHONE");
-    public static final PreferredContact PAGER = new PreferredContact("PAGER");
-    public static final PreferredContact POSTAL_MAIL = new PreferredContact("POSTAL_MAIL");
-    
-    protected PreferredContact(String name) {
-        super(name);
+    EMAIL,
+    FAX,
+    PHONE,
+    PAGER,
+    POSTAL_MAIL;
+
+    public String getName() {
+        return name();
     }
-    
+
     public String toString() {
         return PreferredContact.class.getName() + "." + getName();
     }

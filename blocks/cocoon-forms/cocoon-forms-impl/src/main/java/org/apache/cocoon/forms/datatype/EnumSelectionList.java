@@ -24,8 +24,6 @@ import java.util.Locale;
 import org.apache.cocoon.forms.FormsConstants;
 import org.apache.cocoon.xml.AttributesImpl;
 import org.apache.cocoon.xml.XMLUtils;
-import org.apache.commons.lang.enums.Enum;
-import org.apache.commons.lang.enums.EnumUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 
@@ -111,21 +109,20 @@ public class EnumSelectionList implements SelectionList {
                 }
                 contentHandler.endElement(FormsConstants.INSTANCE_NS, ITEM_EL, FormsConstants.INSTANCE_PREFIX_COLON + ITEM_EL);
             }
-            // Test if we have an apache enum class
-            boolean apacheEnumDone = false;
-            if (Enum.class.isAssignableFrom(clazz)) {
-                Iterator iter = EnumUtils.iterator(clazz);
-                if (iter != null) {
-                    apacheEnumDone = true;
-                    while (iter.hasNext()) {
-                        Enum element = (Enum) iter.next();
-                        String stringValue = clazz.getName() + "." + element.getName();
+            // Test if we have a Java enum class
+            boolean javaEnumDone = false;
+            if (clazz.isEnum()) {
+                Object[] enumConstants = clazz.getEnumConstants();
+                if (enumConstants != null) {
+                    javaEnumDone = true;
+                    for (Object element : enumConstants) {
+                        String stringValue = clazz.getName() + "." + ((java.lang.Enum)element).name();
                         generateItem(contentHandler, stringValue);
                     }
                 }
             }
-            // If it's not an apache enum or we didn't manage to read the enum list, then proceed with common method.
-            if (!apacheEnumDone) {
+            // If it's not a Java enum or we didn't manage to read the enum list, then proceed with common method.
+            if (!javaEnumDone) {
 	            Field fields[] = clazz.getDeclaredFields();
 	            for (int i = 0 ; i < fields.length ; ++i) {
 	                int mods = fields[i].getModifiers();

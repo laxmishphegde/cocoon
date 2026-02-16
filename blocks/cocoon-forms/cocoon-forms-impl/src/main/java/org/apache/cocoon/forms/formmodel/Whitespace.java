@@ -16,39 +16,54 @@
  */
 package org.apache.cocoon.forms.formmodel;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.enums.Enum;
-
 /**
  * Enumeration of whitespace-handling strategies.
  */
-public class Whitespace extends Enum {
+public enum Whitespace {
 
-    public static final Whitespace PRESERVE = new Whitespace("preserve");
-    public static final Whitespace TRIM_START = new Whitespace("trim-start");
-    public static final Whitespace TRIM_END = new Whitespace("trim-end");
-    public static final Whitespace TRIM = new Whitespace("trim");
+    PRESERVE("preserve"),
+    TRIM_START("trim-start"),
+    TRIM_END("trim-end"),
+    TRIM("trim");
+
+    private final String name;
 
     private Whitespace(String name) {
-        super(name);
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public static Whitespace getEnum(String name) {
-        return (Whitespace) getEnum(Whitespace.class, name);
+        for (Whitespace ws : values()) {
+            if (ws.getName().equals(name)) {
+                return ws;
+            }
+        }
+        return null;
     }
 
-    public static Map getEnumMap() {
-        return getEnumMap(Whitespace.class);
+    public static Map<String, Whitespace> getEnumMap() {
+        Map<String, Whitespace> map = new HashMap<String, Whitespace>();
+        for (Whitespace ws : values()) {
+            map.put(ws.getName(), ws);
+        }
+        return map;
     }
 
-    public static List getEnumList() {
-        return getEnumList(Whitespace.class);
+    public static List<Whitespace> getEnumList() {
+        return Arrays.asList(values());
     }
 
-    public static Iterator iterator() {
-        return iterator(Whitespace.class);
+    public static Iterator<Whitespace> iterator() {
+        return Arrays.asList(values()).iterator();
     }
 }

@@ -63,8 +63,12 @@ public class MockContext extends AbstractContext {
         return (String)mappings.get(file.substring(file.lastIndexOf(".")+1));
     }
 
-    public void setInitParameter(String name, String value) {
+    public boolean setInitParameter(String name, String value) {
+        if (initparameters.containsKey(name)) {
+            return false; // Already exists
+        }
         initparameters.put(name, value);
+        return true;
     }
 
     public String getInitParameter(String name) {
@@ -92,5 +96,143 @@ public class MockContext extends AbstractContext {
 
     public void log(String arg0) {
         System.err.println("log");
+    }
+
+    // Jakarta Servlet 5.0 API methods
+
+    public void setResponseCharacterEncoding(String encoding) {
+        // Mock implementation - no-op
+    }
+
+    public String getResponseCharacterEncoding() {
+        return null;
+    }
+
+    public void setRequestCharacterEncoding(String encoding) {
+        // Mock implementation - no-op
+    }
+
+    public String getRequestCharacterEncoding() {
+        return null;
+    }
+
+    public String getVirtualServerName() {
+        return "mock-server";
+    }
+
+    public int getSessionTimeout() {
+        return 30;
+    }
+
+    public void setSessionTimeout(int sessionTimeout) {
+        // Mock implementation - no-op
+    }
+
+    public ClassLoader getClassLoader() {
+        return getClass().getClassLoader();
+    }
+
+    public int getEffectiveMajorVersion() {
+        return 5;
+    }
+
+    public int getEffectiveMinorVersion() {
+        return 0;
+    }
+
+    public java.util.Set<jakarta.servlet.SessionTrackingMode> getDefaultSessionTrackingModes() {
+        return java.util.Collections.emptySet();
+    }
+
+    public java.util.Set<jakarta.servlet.SessionTrackingMode> getEffectiveSessionTrackingModes() {
+        return java.util.Collections.emptySet();
+    }
+
+    public void setSessionTrackingModes(java.util.Set<jakarta.servlet.SessionTrackingMode> sessionTrackingModes) {
+        // Mock implementation - no-op
+    }
+
+    public jakarta.servlet.SessionCookieConfig getSessionCookieConfig() {
+        return null;
+    }
+
+    public jakarta.servlet.descriptor.JspConfigDescriptor getJspConfigDescriptor() {
+        return null;
+    }
+
+    public void declareRoles(String... roleNames) {
+        // Mock implementation - no-op
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, String className) {
+        return null;
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, jakarta.servlet.Servlet servlet) {
+        return null;
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, Class<? extends jakarta.servlet.Servlet> servletClass) {
+        return null;
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addJspFile(String servletName, String jspFile) {
+        return null;
+    }
+
+    public <T extends jakarta.servlet.Servlet> T createServlet(Class<T> clazz) throws jakarta.servlet.ServletException {
+        return null;
+    }
+
+    public jakarta.servlet.ServletRegistration getServletRegistration(String servletName) {
+        return null;
+    }
+
+    public java.util.Map<String, ? extends jakarta.servlet.ServletRegistration> getServletRegistrations() {
+        return java.util.Collections.emptyMap();
+    }
+
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
+        return null;
+    }
+
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, jakarta.servlet.Filter filter) {
+        return null;
+    }
+
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, Class<? extends jakarta.servlet.Filter> filterClass) {
+        return null;
+    }
+
+    public <T extends jakarta.servlet.Filter> T createFilter(Class<T> clazz) throws jakarta.servlet.ServletException {
+        return null;
+    }
+
+    public jakarta.servlet.FilterRegistration getFilterRegistration(String filterName) {
+        return null;
+    }
+
+    public java.util.Map<String, ? extends jakarta.servlet.FilterRegistration> getFilterRegistrations() {
+        return java.util.Collections.emptyMap();
+    }
+
+    public void addListener(String className) {
+        // Mock implementation - no-op
+    }
+
+    public <T extends java.util.EventListener> void addListener(T t) {
+        // Mock implementation - no-op
+    }
+
+    public void addListener(Class<? extends java.util.EventListener> listenerClass) {
+        // Mock implementation - no-op
+    }
+
+    public <T extends java.util.EventListener> T createListener(Class<T> clazz) throws jakarta.servlet.ServletException {
+        return null;
+    }
+
+    public String getContextPath() {
+        return "";
     }
 }

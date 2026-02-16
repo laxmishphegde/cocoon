@@ -22,12 +22,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.Provider;
-import javax.mail.Store;
-import javax.mail.URLName;
-import javax.servlet.http.HttpSession;
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.Provider;
+import jakarta.mail.Store;
+import jakarta.mail.URLName;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.avalon.framework.context.ContextException;
 import org.apache.avalon.framework.parameters.Parameters;

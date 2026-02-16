@@ -32,6 +32,18 @@
 
   <name>Cocoon Maven Javadocs Script Report</name>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <configuration>
+          <goalPrefix>cocoon-javadocs-script</goalPrefix>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
   <dependencies>
     <!-- utility libs -->
     <dependency>

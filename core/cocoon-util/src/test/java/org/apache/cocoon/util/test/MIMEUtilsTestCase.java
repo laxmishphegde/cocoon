@@ -22,7 +22,7 @@ import java.io.StringReader;
 import junit.framework.TestCase;
 
 import org.apache.cocoon.util.MIMEUtils;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 /**
  * Test Cases for the MIMEUtils class.

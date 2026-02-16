@@ -25,14 +25,14 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletInputStream;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionContext;
 
 import org.apache.cocoon.environment.Cookie;
 import org.apache.cocoon.environment.Request;
@@ -144,7 +144,7 @@ public class MockProcessInfoProvider implements ProcessInfoProvider {
             return request.getCookieMap();
         }
 
-        public javax.servlet.http.Cookie[] getCookies() {
+        public jakarta.servlet.http.Cookie[] getCookies() {
             //FIXME: Implement this method if needed
             throw new UnsupportedOperationException();
         }
@@ -377,6 +377,71 @@ public class MockProcessInfoProvider implements ProcessInfoProvider {
             throw new UnsupportedOperationException();
         }
 
+        public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass)
+                throws java.io.IOException, jakarta.servlet.ServletException {
+            return request.upgrade(handlerClass);
+        }
+
+        public long getContentLengthLong() {
+            return request.getContentLengthLong();
+        }
+
+        public jakarta.servlet.DispatcherType getDispatcherType() {
+            return request.getDispatcherType();
+        }
+
+        public jakarta.servlet.AsyncContext getAsyncContext() {
+            return request.getAsyncContext();
+        }
+
+        public boolean isAsyncStarted() {
+            return request.isAsyncStarted();
+        }
+
+        public boolean isAsyncSupported() {
+            return request.isAsyncSupported();
+        }
+
+        public jakarta.servlet.AsyncContext startAsync() {
+            return request.startAsync();
+        }
+
+        public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest,
+                                                         jakarta.servlet.ServletResponse servletResponse) {
+            return request.startAsync(servletRequest, servletResponse);
+        }
+
+        public jakarta.servlet.ServletContext getServletContext() {
+            return request.getServletContext();
+        }
+
+        public void login(String username, String password) throws jakarta.servlet.ServletException {
+            request.login(username, password);
+        }
+
+        public void logout() throws jakarta.servlet.ServletException {
+            request.logout();
+        }
+
+        public boolean authenticate(jakarta.servlet.http.HttpServletResponse response)
+                throws java.io.IOException, jakarta.servlet.ServletException {
+            return request.authenticate(response);
+        }
+
+        public String changeSessionId() {
+            return request.changeSessionId();
+        }
+
+        public jakarta.servlet.http.Part getPart(String name)
+                throws java.io.IOException, jakarta.servlet.ServletException {
+            return request.getPart(name);
+        }
+
+        public java.util.Collection<jakarta.servlet.http.Part> getParts()
+                throws java.io.IOException, jakarta.servlet.ServletException {
+            return request.getParts();
+        }
+
     }
     
     /**
@@ -411,7 +476,7 @@ public class MockProcessInfoProvider implements ProcessInfoProvider {
             return response.containsHeader(name);
         }
 
-        public javax.servlet.http.Cookie createCookie(String name, String value) {
+        public jakarta.servlet.http.Cookie createCookie(String name, String value) {
             return response.createCookie(name, value);
         }
 
@@ -443,7 +508,7 @@ public class MockProcessInfoProvider implements ProcessInfoProvider {
             response.setLocale(loc);
         }
 
-        public void addCookie(javax.servlet.http.Cookie cookie) {
+        public void addCookie(jakarta.servlet.http.Cookie cookie) {
             //FIXME: Implement this method if needed
             throw new UnsupportedOperationException();
         }
@@ -548,8 +613,33 @@ public class MockProcessInfoProvider implements ProcessInfoProvider {
             throw new UnsupportedOperationException();
         }
 
+        public java.util.Collection<String> getHeaderNames() {
+            //FIXME: Implement this method if needed
+            throw new UnsupportedOperationException();
+        }
+
+        public java.util.Collection<String> getHeaders(String name) {
+            //FIXME: Implement this method if needed
+            throw new UnsupportedOperationException();
+        }
+
+        public String getHeader(String name) {
+            //FIXME: Implement this method if needed
+            throw new UnsupportedOperationException();
+        }
+
+        public int getStatus() {
+            //FIXME: Implement this method if needed
+            throw new UnsupportedOperationException();
+        }
+
+        public void setContentLengthLong(long len) {
+            //FIXME: Implement this method if needed
+            throw new UnsupportedOperationException();
+        }
+
     }
-    
+
     static public class StubSession implements HttpSession {
         private HttpSession session;
         
@@ -635,7 +725,7 @@ public class MockProcessInfoProvider implements ProcessInfoProvider {
             //FIXME: Implement this method if needed
             throw new UnsupportedOperationException();
         }
-        
+
     }
 
 }

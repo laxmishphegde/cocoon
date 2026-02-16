@@ -17,7 +17,7 @@
 package org.apache.cocoon.servlet;
 
 import org.apache.cocoon.configuration.Settings;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * Helper class for managing Cocoon servlet specific settings.

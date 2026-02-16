@@ -16,76 +16,103 @@
  */
 package org.apache.cocoon.forms.event;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.enums.ValuedEnum;
-
 /**
  * Type-safe enumeration of the various repeater actions that triggers events.
- * 
+ *
  * @version $Id$
  */
-public class RepeaterEventAction extends ValuedEnum {
+public enum RepeaterEventAction {
 
-    protected RepeaterEventAction(String name, int value) {
-        super(name, value);
-    }
-    
-    public static final int ROW_ADDED_VALUE = 0;
     /**
      * This event type is triggered after a row has been added.
      */
-    public static final RepeaterEventAction ROW_ADDED = new RepeaterEventAction("Row added", ROW_ADDED_VALUE);
+    ROW_ADDED("Row added", 0),
 
-    public static final int ROW_DELETING_VALUE = 1;
     /**
-     * This event type is triggered before a row get's removed. 
+     * This event type is triggered before a row get's removed.
      */
-    public static final RepeaterEventAction ROW_DELETING = new RepeaterEventAction("Row deleting", ROW_DELETING_VALUE);
-    
-    public static final int ROW_DELETED_VALUE = 2;
+    ROW_DELETING("Row deleting", 1),
+
     /**
-     * This event type is triggered after a row has been removed. 
+     * This event type is triggered after a row has been removed.
      */
-    public static final RepeaterEventAction ROW_DELETED = new RepeaterEventAction("Row deleted", ROW_DELETED_VALUE);
-    
-    public static final int ROWS_REARRANGED_VALUE = 3;
+    ROW_DELETED("Row deleted", 2),
+
     /**
      * This event type is triggered after the order of one or more rows has been changed.
      */
-    public static final RepeaterEventAction ROWS_REARRANGED = new RepeaterEventAction("Rows rearranged",ROWS_REARRANGED_VALUE);
+    ROWS_REARRANGED("Rows rearranged", 3),
 
-    public static final int ROWS_CLEARING_VALUE = 4;
     /**
-     * This event type is triggered before the repeater is cleared (aka before all rows are removed). 
+     * This event type is triggered before the repeater is cleared (aka before all rows are removed).
      */
-    public static final RepeaterEventAction ROWS_CLEARING = new RepeaterEventAction("Rows clearing",ROWS_CLEARING_VALUE);
-    
-    public static final int ROWS_CLEARED_VALUE = 5;
+    ROWS_CLEARING("Rows clearing", 4),
+
     /**
      * This event type is triggered after the repeater has been cleared (aka after all rows have been removed)
      */
-    public static final RepeaterEventAction ROWS_CLEARED = new RepeaterEventAction("Rows cleared",ROWS_CLEARED_VALUE);
-    
-    public static RepeaterEventAction getEnum(String name) {
-      return (RepeaterEventAction) getEnum(RepeaterEventAction.class, name);
-    }
-    
-    public static RepeaterEventAction getEnum(int value) {
-      return (RepeaterEventAction) getEnum(RepeaterEventAction.class, value);
+    ROWS_CLEARED("Rows cleared", 5);
+
+    public static final int ROW_ADDED_VALUE = 0;
+    public static final int ROW_DELETING_VALUE = 1;
+    public static final int ROW_DELETED_VALUE = 2;
+    public static final int ROWS_REARRANGED_VALUE = 3;
+    public static final int ROWS_CLEARING_VALUE = 4;
+    public static final int ROWS_CLEARED_VALUE = 5;
+
+    private final String name;
+    private final int value;
+
+    private RepeaterEventAction(String name, int value) {
+        this.name = name;
+        this.value = value;
     }
 
-    public static Map getEnumMap() {
-      return getEnumMap(RepeaterEventAction.class);
+    public String getName() {
+        return this.name;
     }
- 
-    public static List getEnumList() {
-      return getEnumList(RepeaterEventAction.class);
+
+    public int getValue() {
+        return this.value;
     }
- 
-    public static Iterator iterator() {
-      return iterator(RepeaterEventAction.class);
+
+    public static RepeaterEventAction getEnum(String name) {
+        for (RepeaterEventAction action : values()) {
+            if (action.getName().equals(name)) {
+                return action;
+            }
+        }
+        return null;
+    }
+
+    public static RepeaterEventAction getEnum(int value) {
+        for (RepeaterEventAction action : values()) {
+            if (action.getValue() == value) {
+                return action;
+            }
+        }
+        return null;
+    }
+
+    public static Map<String, RepeaterEventAction> getEnumMap() {
+        Map<String, RepeaterEventAction> map = new HashMap<String, RepeaterEventAction>();
+        for (RepeaterEventAction action : values()) {
+            map.put(action.getName(), action);
+        }
+        return map;
+    }
+
+    public static List<RepeaterEventAction> getEnumList() {
+        return Arrays.asList(values());
+    }
+
+    public static Iterator<RepeaterEventAction> iterator() {
+        return Arrays.asList(values()).iterator();
     }
 }

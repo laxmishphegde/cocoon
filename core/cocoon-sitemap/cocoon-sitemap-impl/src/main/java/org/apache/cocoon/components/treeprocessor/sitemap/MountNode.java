@@ -29,7 +29,7 @@ import org.apache.cocoon.components.treeprocessor.InvokeContext;
 import org.apache.cocoon.components.treeprocessor.TreeProcessor;
 import org.apache.cocoon.components.treeprocessor.variables.VariableResolver;
 import org.apache.cocoon.environment.Environment;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * @version $Id$
@@ -69,7 +69,7 @@ public class MountNode extends AbstractProcessingNode
         this.source = source;
         this.parentProcessor = parentProcessor;
         this.checkReload = checkReload;
-        this.passThrough = BooleanUtils.toBooleanObject(passThrough);
+        this.passThrough = Boolean.valueOf(passThrough);
     }
 
     /**

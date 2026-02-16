@@ -27,7 +27,7 @@ import org.apache.avalon.framework.configuration.DefaultConfigurationBuilder;
 import org.apache.cocoon.template.environment.ParsingContext;
 import org.apache.cocoon.template.instruction.Instruction;
 import org.apache.cocoon.template.script.event.StartElement;
-import org.apache.commons.lang.ClassUtils;
+import org.apache.commons.lang3.ClassUtils;
 import org.apache.excalibur.source.Source;
 import org.apache.excalibur.source.SourceResolver;
 import org.springframework.beans.factory.BeanCreationException;

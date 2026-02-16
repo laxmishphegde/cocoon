@@ -29,7 +29,7 @@ import org.apache.cocoon.components.modules.input.InputModule;
 import org.apache.cocoon.environment.SourceResolver;
 import org.apache.cocoon.util.HashMap;
 import org.apache.cocoon.xml.dom.DOMStreamer;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 import org.w3c.dom.DocumentFragment;
 import org.xml.sax.Attributes;

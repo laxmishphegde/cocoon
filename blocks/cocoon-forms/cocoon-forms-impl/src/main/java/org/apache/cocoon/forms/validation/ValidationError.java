@@ -20,7 +20,7 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.apache.cocoon.forms.util.I18nMessage;
 import org.apache.cocoon.forms.util.StringMessage;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.excalibur.xml.sax.XMLizable;
 
 /**

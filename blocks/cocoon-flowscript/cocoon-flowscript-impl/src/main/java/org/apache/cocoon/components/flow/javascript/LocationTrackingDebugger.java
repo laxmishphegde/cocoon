@@ -23,7 +23,7 @@ import org.apache.cocoon.ProcessingException;
 import org.apache.cocoon.util.location.Location;
 import org.apache.cocoon.util.location.LocationImpl;
 import org.apache.cocoon.util.location.LocationUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.EcmaError;
 import org.mozilla.javascript.JavaScriptException;
@@ -72,7 +72,8 @@ public class LocationTrackingDebugger implements Debugger {
 
     static {
         // Register what's needed to analyze exceptions produced by Rhino
-        ExceptionUtils.addCauseMethodName("getWrappedException");
+        // Note: ExceptionUtils.addCauseMethodName() was removed in commons-lang3.
+        // ExceptionUtils.getCause() now automatically checks common cause methods including getWrappedException().
         LocationUtils.addFinder(rhinoLocFinder);
     }
     

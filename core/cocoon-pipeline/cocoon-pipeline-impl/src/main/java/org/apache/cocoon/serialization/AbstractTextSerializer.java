@@ -36,7 +36,7 @@ import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.apache.avalon.framework.service.ServiceException;
 import org.apache.avalon.framework.service.ServiceManager;
 import org.apache.avalon.framework.service.Serviceable;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.excalibur.source.SourceValidity;
 import org.apache.excalibur.source.impl.validity.NOPValidity;
 
@@ -441,7 +441,7 @@ public abstract class AbstractTextSerializer extends AbstractSerializer
 
             getLogger().debug("Trax handler " + handler.getClass().getName() + msg);
 
-            needsNamespaceCache.put(factory.getClass().getName(), BooleanUtils.toBooleanObject(needsIt));
+            needsNamespaceCache.put(factory.getClass().getName(), Boolean.valueOf(needsIt));
 
             return needsIt;
         }

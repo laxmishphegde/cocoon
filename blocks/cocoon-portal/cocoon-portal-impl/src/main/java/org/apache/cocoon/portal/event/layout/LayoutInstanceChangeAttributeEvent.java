@@ -20,7 +20,7 @@ import org.apache.cocoon.portal.PortalService;
 import org.apache.cocoon.portal.event.ComparableEvent;
 import org.apache.cocoon.portal.event.ConvertableEvent;
 import org.apache.cocoon.portal.om.LayoutInstance;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 /**
  *

@@ -21,7 +21,7 @@ import java.util.StringTokenizer;
 import javax.portlet.PortletConfig;
 
 import org.apache.cocoon.core.MutableSettings;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * This helper class initializes the {@link MutableSettings} object from the servlet

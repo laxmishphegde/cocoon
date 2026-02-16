@@ -194,7 +194,7 @@ public class SettingsBeanFactoryPostProcessor extends AbstractSettingsBeanFactor
             File workDir;
             // fill from the servlet context
             if (this.servletContext != null) {
-                workDir = (File) this.servletContext.getAttribute("javax.servlet.context.tempdir");
+                workDir = (File) this.servletContext.getAttribute("jakarta.servlet.context.tempdir");
             } else {
                 workDir = new File("cocoon-files");
             }

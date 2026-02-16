@@ -21,7 +21,7 @@ import org.apache.cocoon.portal.event.ComparableEvent;
 import org.apache.cocoon.portal.event.ConvertableEvent;
 import org.apache.cocoon.portal.event.LayoutEvent;
 import org.apache.cocoon.portal.om.Layout;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 /**
  *

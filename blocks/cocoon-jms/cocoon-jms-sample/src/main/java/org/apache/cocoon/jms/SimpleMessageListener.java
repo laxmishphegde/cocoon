@@ -19,8 +19,8 @@ package org.apache.cocoon.jms;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
+import jakarta.jms.JMSException;
+import jakarta.jms.Message;
 
 import org.apache.cocoon.components.jms.AbstractMessageListener;
 

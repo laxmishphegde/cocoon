@@ -61,7 +61,7 @@ import org.xml.sax.SAXException;
  * such information to outside control.</p>
  * 
  * Migration from JSTL1.0
- * @see javax.servlet.jsp.jstl.core.LoopTagSupport
+ * @see jakarta.servlet.jsp.jstl.core.LoopTagSupport
  *
  * @version $Id$
  */

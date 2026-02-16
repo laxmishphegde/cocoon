@@ -34,8 +34,8 @@ import org.apache.cocoon.transformation.helpers.IncludeCacheManagerSession;
 import org.apache.cocoon.xml.IncludeXMLConsumer;
 import org.apache.cocoon.xml.XMLConsumer;
 import org.apache.cocoon.xml.XMLUtils;
-import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.excalibur.source.Source;
 import org.apache.excalibur.source.SourceException;
 import org.apache.excalibur.source.SourceParameters;
@@ -277,8 +277,8 @@ public class CIncludeTransformer extends AbstractSAXTransformer
             if (ignoreErrors == null || ignoreErrors.length() == 0) {
                 ignoreErrors = "false";
             }
-            this.stack.push(BooleanUtils.toBooleanObject(this.ignoreEmptyCharacters));
-            this.stack.push(BooleanUtils.toBooleanObject(this.ignoreWhitespaces));
+            this.stack.push(Boolean.valueOf(this.ignoreEmptyCharacters));
+            this.stack.push(Boolean.valueOf(this.ignoreWhitespaces));
             this.stack.push(ignoreErrors);
 
             this.ignoreEmptyCharacters = false;

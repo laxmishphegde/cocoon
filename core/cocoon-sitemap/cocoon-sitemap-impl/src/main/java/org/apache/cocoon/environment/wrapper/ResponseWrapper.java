@@ -47,11 +47,11 @@ public class ResponseWrapper extends AbstractResponse implements Response {
         return res.getLocale();
     }
 
-    public javax.servlet.http.Cookie createCookie(String name, String value) {
+    public jakarta.servlet.http.Cookie createCookie(String name, String value) {
         return res.createCookie(name, value);
     }
 
-    public void addCookie(javax.servlet.http.Cookie cookie) {
+    public void addCookie(jakarta.servlet.http.Cookie cookie) {
         res.addCookie(cookie);
     }
 
@@ -87,6 +87,41 @@ public class ResponseWrapper extends AbstractResponse implements Response {
     }
 
     public void addIntHeader(String name, int value) {
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get all header names
+     */
+    public java.util.Collection<String> getHeaderNames() {
+        return res.getHeaderNames();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get header values by name
+     */
+    public java.util.Collection<String> getHeaders(String name) {
+        return res.getHeaders(name);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get a single header value by name
+     */
+    public String getHeader(String name) {
+        return res.getHeader(name);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get the status code
+     */
+    public int getStatus() {
+        return res.getStatus();
+    }
+
+    /**
+     * Jakarta Servlet 3.1 API - Set content length as long
+     */
+    public void setContentLengthLong(long len) {
+        res.setContentLengthLong(len);
     }
 
 }

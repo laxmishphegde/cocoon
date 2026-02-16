@@ -19,7 +19,7 @@ package org.apache.cocoon.components.notification;
 import org.apache.cocoon.Constants;
 import org.apache.cocoon.xml.XMLUtils;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;

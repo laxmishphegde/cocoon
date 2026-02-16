@@ -22,7 +22,7 @@ import org.apache.cocoon.template.JXTemplateGenerator;
 import org.apache.cocoon.template.environment.ParsingContext;
 import org.apache.cocoon.template.instruction.Instruction;
 import org.apache.cocoon.template.script.event.*;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;

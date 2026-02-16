@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.apache.cocoon.blockdeployment.BlockDeploymentServletContextListener;
 import org.springframework.beans.BeansException;
@@ -78,7 +78,18 @@ public class BlockPathPropertyPlaceholderConfigurer extends PropertyPlaceholderC
         }
 
         protected String resolveStringValue(String strVal) {
-            return parseStringValue(strVal, this.props, visitedPlaceholders);
+            // Spring 6 compatibility - manually resolve placeholders
+            if (strVal == null) {
+                return null;
+            }
+            String result = strVal;
+            for (String key : this.props.stringPropertyNames()) {
+                String placeholder = "${" + key + "}";
+                if (result.contains(placeholder)) {
+                    result = result.replace(placeholder, this.props.getProperty(key));
+                }
+            }
+            return result;
         }
     }
 

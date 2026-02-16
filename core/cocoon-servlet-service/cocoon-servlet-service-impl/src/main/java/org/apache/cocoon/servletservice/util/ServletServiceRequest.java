@@ -40,13 +40,13 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionContext;
 
 import org.apache.cocoon.callstack.CallFrame;
 import org.apache.cocoon.callstack.CallStack;
@@ -312,6 +312,25 @@ public class ServletServiceRequest implements HttpServletRequest {
             public int read() throws IOException {
                 return inputStream.read();
             }
+
+            @Override
+            public boolean isFinished() {
+                try {
+                    return inputStream.available() == 0;
+                } catch (IOException e) {
+                    return true;
+                }
+            }
+
+            @Override
+            public boolean isReady() {
+                return true;
+            }
+
+            @Override
+            public void setReadListener(jakarta.servlet.ReadListener readListener) {
+                throw new UnsupportedOperationException("Async IO not supported in servlet service requests");
+            }
         };
     }
 
@@ -369,7 +388,7 @@ public class ServletServiceRequest implements HttpServletRequest {
 
     /**
      * @deprecated
-     * @see javax.servlet.ServletRequest#getRealPath(java.lang.String)
+     * @see jakarta.servlet.ServletRequest#getRealPath(java.lang.String)
      */
     public String getRealPath(String path) {
         return null;
@@ -830,6 +849,67 @@ public class ServletServiceRequest implements HttpServletRequest {
             return this.values.get(name);
         }
 
+    }
+
+    // Jakarta Servlet 5.0 API compatibility methods
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass) {
+        throw new UnsupportedOperationException("WebSocket upgrade not supported in servlet service requests");
+    }
+
+    public jakarta.servlet.http.Part getPart(String name) {
+        throw new UnsupportedOperationException("Multipart requests not supported in servlet service requests");
+    }
+
+    public java.util.Collection<jakarta.servlet.http.Part> getParts() {
+        throw new UnsupportedOperationException("Multipart requests not supported in servlet service requests");
+    }
+
+    public void logout() {
+        throw new UnsupportedOperationException("Authentication not supported in servlet service requests");
+    }
+
+    public void login(String username, String password) {
+        throw new UnsupportedOperationException("Authentication not supported in servlet service requests");
+    }
+
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response) {
+        throw new UnsupportedOperationException("Authentication not supported in servlet service requests");
+    }
+
+    public String changeSessionId() {
+        throw new UnsupportedOperationException("Session management not supported in servlet service requests");
+    }
+
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return jakarta.servlet.DispatcherType.REQUEST;
+    }
+
+    public jakarta.servlet.AsyncContext getAsyncContext() {
+        throw new UnsupportedOperationException("Async processing not supported in servlet service requests");
+    }
+
+    public boolean isAsyncSupported() {
+        return false;
+    }
+
+    public boolean isAsyncStarted() {
+        return false;
+    }
+
+    public jakarta.servlet.AsyncContext startAsync() {
+        throw new UnsupportedOperationException("Async processing not supported in servlet service requests");
+    }
+
+    public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest, jakarta.servlet.ServletResponse servletResponse) {
+        throw new UnsupportedOperationException("Async processing not supported in servlet service requests");
+    }
+
+    public long getContentLengthLong() {
+        return getContentLength();
+    }
+
+    public jakarta.servlet.ServletContext getServletContext() {
+        return this.context;
     }
 
 }

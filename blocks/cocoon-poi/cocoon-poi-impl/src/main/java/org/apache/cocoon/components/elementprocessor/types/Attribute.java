@@ -16,7 +16,7 @@
  */
 package org.apache.cocoon.components.elementprocessor.types;
 
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * Encapsulation of a single XML element attribute in a way that

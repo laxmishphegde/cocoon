@@ -24,7 +24,7 @@ import java.util.Map;
 import org.apache.cocoon.auth.ApplicationManager;
 import org.apache.cocoon.auth.AuthenticationException;
 import org.apache.cocoon.auth.User;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Implementation of a DAO security handler.

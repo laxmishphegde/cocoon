@@ -31,7 +31,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.apache.cocoon.util.location.Location;
 import org.apache.cocoon.util.location.LocationAttributes;
 import org.apache.cocoon.xml.SaxBuffer;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.excalibur.xml.sax.XMLizable;
 import org.w3c.dom.Attr;
 import org.w3c.dom.CDATASection;

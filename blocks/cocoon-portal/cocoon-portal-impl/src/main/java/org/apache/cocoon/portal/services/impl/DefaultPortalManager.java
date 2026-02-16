@@ -40,7 +40,7 @@ import org.apache.cocoon.portal.services.aspects.impl.support.ResponseProcessorA
 import org.apache.cocoon.portal.services.aspects.support.AspectChainImpl;
 import org.apache.cocoon.portal.util.AbstractBean;
 import org.apache.cocoon.portal.util.XMLUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;

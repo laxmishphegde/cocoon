@@ -16,8 +16,8 @@
  */
 package org.apache.cocoon.components.notification;
 
-import org.apache.commons.lang.SystemUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.xml.sax.SAXParseException;
 
 import javax.xml.transform.SourceLocator;
@@ -154,16 +154,8 @@ public class DefaultNotifyingBuilder implements NotifyingBuilder {
      */
     private static void appendTraceChain(Writer out, Throwable t) {
         PrintWriter pw = new PrintWriter(out);
-        if (SystemUtils.isJavaVersionAtLeast(140)) {
-            t.printStackTrace(pw);
-        } else {
-            for (Throwable cause = t; cause != null; cause = ExceptionUtils.getCause(cause)) {
-                if (cause != t) {
-                    pw.println();
-                }
-                cause.printStackTrace(pw);
-            }
-        }
+        // Java 1.4+ has built-in exception chaining, so we can use printStackTrace directly
+        t.printStackTrace(pw);
     }
 
     /**

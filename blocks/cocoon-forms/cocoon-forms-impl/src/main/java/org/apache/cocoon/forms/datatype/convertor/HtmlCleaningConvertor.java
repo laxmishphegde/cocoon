@@ -18,7 +18,7 @@ package org.apache.cocoon.forms.datatype.convertor;
 import org.apache.cocoon.forms.datatype.convertor.Convertor;
 import org.apache.cocoon.forms.datatype.convertor.ConversionResult;
 import org.apache.cocoon.forms.validation.ValidationError;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.outerj.daisy.htmlcleaner.HtmlCleanerTemplate;

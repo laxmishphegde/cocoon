@@ -30,8 +30,8 @@ import org.apache.cocoon.forms.event.WidgetEventMulticaster;
 import org.apache.cocoon.forms.validation.ValidationError;
 import org.apache.cocoon.forms.validation.ValidationErrorAware;
 import org.apache.commons.collections.list.CursorableLinkedList;
-import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * A widget that serves as a container for other widgets, the top-level widget in
@@ -383,7 +383,7 @@ public class Form extends AbstractContainerWidget
         // Set the indicator that terminates the form processing.
         // If redisplayForm is true, interaction is not finished and process() must
         // return false, hence the negation below.
-        this.endProcessing = BooleanUtils.toBooleanObject(!redisplayForm);
+        this.endProcessing = Boolean.valueOf(!redisplayForm);
     }
 
     /**

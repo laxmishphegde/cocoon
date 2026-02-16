@@ -38,9 +38,9 @@ import javax.naming.directory.SearchResult;
 
 import org.apache.avalon.framework.parameters.Parameters;
 import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.ObjectUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 
 import org.apache.cocoon.ProcessingException;

@@ -34,7 +34,7 @@ import org.apache.avalon.framework.configuration.Configuration;
 import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.apache.cocoon.Constants;
 import org.apache.cocoon.util.AbstractLogEnabled;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.regexp.RE;
 import org.apache.regexp.RESyntaxException;
 

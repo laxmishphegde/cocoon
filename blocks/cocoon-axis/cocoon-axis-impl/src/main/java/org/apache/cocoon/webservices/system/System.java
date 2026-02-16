@@ -17,7 +17,7 @@
 package org.apache.cocoon.webservices.system;
 
 import java.util.Properties;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 /**
  * Class which provides JVM system related SOAP services.

@@ -18,8 +18,8 @@ package org.apache.cocoon.blocks.util;
 
 import java.util.Enumeration;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
 
 /**
  * @version $Id: ServletConfigurationWrapper.java 368000 2006-01-11 10:45:20Z
@@ -52,7 +52,7 @@ public class ServletConfigurationWrapper implements ServletConfig {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletConfig#getServletName()
+     * @see jakarta.servlet.ServletConfig#getServletName()
      */
     public String getServletName() {
         return this.servletConfig.getServletName();
@@ -61,7 +61,7 @@ public class ServletConfigurationWrapper implements ServletConfig {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletConfig#getServletContext()
+     * @see jakarta.servlet.ServletConfig#getServletContext()
      */
     public ServletContext getServletContext() {
         return this.servletContext != null ? this.servletContext
@@ -71,7 +71,7 @@ public class ServletConfigurationWrapper implements ServletConfig {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletConfig#getInitParameter(java.lang.String)
+     * @see jakarta.servlet.ServletConfig#getInitParameter(java.lang.String)
      */
     public String getInitParameter(String name) {
         return this.servletConfig.getInitParameter(name);
@@ -80,7 +80,7 @@ public class ServletConfigurationWrapper implements ServletConfig {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletConfig#getInitParameterNames()
+     * @see jakarta.servlet.ServletConfig#getInitParameterNames()
      */
     public Enumeration getInitParameterNames() {
         return this.servletConfig.getInitParameterNames();

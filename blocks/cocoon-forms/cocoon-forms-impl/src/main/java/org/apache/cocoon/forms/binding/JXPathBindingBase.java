@@ -30,7 +30,6 @@ import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.jxpath.Pointer;
 import org.apache.commons.jxpath.ri.model.beans.BeanPropertyPointer;
 import org.apache.commons.jxpath.util.TypeUtils;
-import org.apache.commons.lang.exception.NestableRuntimeException;
 
 /**
  * Provides a base class for hooking up Binding implementations that use the
@@ -100,7 +99,7 @@ public abstract class JXPathBindingBase extends AbstractLogEnabled
             return !this.enclosingLibrary.dependenciesHaveChanged();
         } catch (Exception e) {
             getLogger().error("Error checking dependencies!", e);
-            throw new NestableRuntimeException("Error checking dependencies!", e);
+            throw new RuntimeException("Error checking dependencies!", e);
         }
     }
 

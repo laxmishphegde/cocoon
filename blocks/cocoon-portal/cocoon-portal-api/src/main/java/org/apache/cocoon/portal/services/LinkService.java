@@ -136,7 +136,7 @@ public interface LinkService extends RequestProcessorAspect {
     /**
      * @param url The url to encode.
      * @return The enocoded URL.
-     * @see javax.servlet.http.HttpServletResponse#encodeURL(java.lang.String)
+     * @see jakarta.servlet.http.HttpServletResponse#encodeURL(java.lang.String)
      */
     String encodeURL(String url);
 

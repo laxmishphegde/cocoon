@@ -16,54 +16,78 @@
  */
 package org.apache.cocoon.forms.event;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.enums.ValuedEnum;
-
 /**
  * Type-safe enumeration of the various form processing phases.
- * 
+ *
  * @version $Id$
  */
-public class ProcessingPhase extends ValuedEnum {
+public enum ProcessingPhase {
 
-    protected ProcessingPhase(String name, int value) {
-        super(name, value);
-    }
+    PROCESSING_INITIALIZE("Processing initialize", 4),
+    LOAD_MODEL("Load model", 0),
+    READ_FROM_REQUEST("Read from request", 1),
+    VALIDATE("Validate", 2),
+    SAVE_MODEL("Save model", 3);
+
     public static final int PROCESSING_INITIALIZE_VALUE = 4;
-    public static final ProcessingPhase PROCESSING_INITIALIZE = new ProcessingPhase("Processing initialize", PROCESSING_INITIALIZE_VALUE);
-    
     public static final int LOAD_MODEL_VALUE = 0;
-    public static final ProcessingPhase LOAD_MODEL = new ProcessingPhase("Load model", LOAD_MODEL_VALUE);
-    
     public static final int READ_FROM_REQUEST_VALUE = 1;
-    public static final ProcessingPhase READ_FROM_REQUEST = new ProcessingPhase("Read from request", READ_FROM_REQUEST_VALUE);
-    
     public static final int VALIDATE_VALUE = 2;
-    public static final ProcessingPhase VALIDATE = new ProcessingPhase("Validate", VALIDATE_VALUE);
-    
     public static final int SAVE_MODEL_VALUE = 3;
-    public static final ProcessingPhase SAVE_MODEL = new ProcessingPhase("Save model", SAVE_MODEL_VALUE);
-     
-    public static ProcessingPhase getEnum(String name) {
-      return (ProcessingPhase) getEnum(ProcessingPhase.class, name);
-    }
-    
-    public static ProcessingPhase getEnum(int value) {
-      return (ProcessingPhase) getEnum(ProcessingPhase.class, value);
+
+    private final String name;
+    private final int value;
+
+    private ProcessingPhase(String name, int value) {
+        this.name = name;
+        this.value = value;
     }
 
-    public static Map getEnumMap() {
-      return getEnumMap(ProcessingPhase.class);
+    public String getName() {
+        return this.name;
     }
- 
-    public static List getEnumList() {
-      return getEnumList(ProcessingPhase.class);
+
+    public int getValue() {
+        return this.value;
     }
- 
-    public static Iterator iterator() {
-      return iterator(ProcessingPhase.class);
+
+    public static ProcessingPhase getEnum(String name) {
+        for (ProcessingPhase phase : values()) {
+            if (phase.getName().equals(name)) {
+                return phase;
+            }
+        }
+        return null;
+    }
+
+    public static ProcessingPhase getEnum(int value) {
+        for (ProcessingPhase phase : values()) {
+            if (phase.getValue() == value) {
+                return phase;
+            }
+        }
+        return null;
+    }
+
+    public static Map<String, ProcessingPhase> getEnumMap() {
+        Map<String, ProcessingPhase> map = new HashMap<String, ProcessingPhase>();
+        for (ProcessingPhase phase : values()) {
+            map.put(phase.getName(), phase);
+        }
+        return map;
+    }
+
+    public static List<ProcessingPhase> getEnumList() {
+        return Arrays.asList(values());
+    }
+
+    public static Iterator<ProcessingPhase> iterator() {
+        return Arrays.asList(values()).iterator();
     }
 }

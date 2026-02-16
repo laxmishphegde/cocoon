@@ -29,7 +29,7 @@ package org.apache.cocoon.taglib.core;
  * <p>Environments that require more status can extend this interface.</p>
  * 
  * This Interface is a copy from JSTL1.0
- * @see javax.servlet.jsp.jstl.core.LoopTagStatus
+ * @see jakarta.servlet.jsp.jstl.core.LoopTagStatus
  *
  * @version $Id$
  */

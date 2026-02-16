@@ -18,7 +18,7 @@ package org.apache.cocoon.util.location;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
 /**
  * A simple immutable and serializable implementation of {@link Location}.

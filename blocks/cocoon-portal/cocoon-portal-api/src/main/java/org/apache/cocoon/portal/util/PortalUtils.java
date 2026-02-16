@@ -16,7 +16,7 @@
  */
 package org.apache.cocoon.portal.util;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Some utility methods.

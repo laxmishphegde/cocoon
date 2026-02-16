@@ -31,8 +31,8 @@ import org.apache.cocoon.environment.Request;
 import org.apache.cocoon.environment.Session;
 import org.apache.cocoon.environment.impl.AbstractRequest;
 import org.apache.commons.collections.IteratorUtils;
-import org.apache.commons.lang.SystemUtils;
-import org.apache.commons.lang.NotImplementedException;
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.commons.lang3.NotImplementedException;
 
 /**
  * Creates a specific servlet request simulation from command line usage.

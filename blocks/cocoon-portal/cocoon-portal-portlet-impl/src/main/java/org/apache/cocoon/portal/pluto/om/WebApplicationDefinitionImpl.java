@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Vector;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.apache.pluto.om.common.Description;
 import org.apache.pluto.om.common.DescriptionSet;
@@ -122,7 +122,7 @@ implements WebApplicationDefinition, Support {
     }
 
     /* (non-Javadoc)
-     * @see org.apache.pluto.om.servlet.WebApplicationDefinition#getServletContext(javax.servlet.ServletContext)
+     * @see org.apache.pluto.om.servlet.WebApplicationDefinition#getServletContext(jakarta.servlet.ServletContext)
      */
     public ServletContext getServletContext(ServletContext servletContext) {
         return servletContext.getContext(contextPath);

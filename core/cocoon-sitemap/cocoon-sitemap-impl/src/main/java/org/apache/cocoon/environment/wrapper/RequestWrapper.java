@@ -177,4 +177,118 @@ public final class RequestWrapper extends AbstractRequestWrapper {
         this.requestURI = buffer.toString();
     }
 
+    /**
+     * Jakarta Servlet 3.0 API - Get a part by name from multipart/form-data request
+     */
+    public jakarta.servlet.http.Part getPart(String name)
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.getPart(name);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get all parts from multipart/form-data request
+     */
+    public java.util.Collection<jakarta.servlet.http.Part> getParts()
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.getParts();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Authenticate the request
+     */
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response)
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.authenticate(response);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Login with username and password
+     */
+    public void login(String username, String password)
+            throws jakarta.servlet.ServletException {
+        this.req.login(username, password);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Logout the current user
+     */
+    public void logout() throws jakarta.servlet.ServletException {
+        this.req.logout();
+    }
+
+    /**
+     * Jakarta Servlet 3.1 API - Change the session ID
+     */
+    public String changeSessionId() {
+        return this.req.changeSessionId();
+    }
+
+    /**
+     * Jakarta Servlet 3.1 API - Get content length as long
+     */
+    public long getContentLengthLong() {
+        return this.req.getContentLengthLong();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get the dispatcher type
+     */
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return this.req.getDispatcherType();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get the async context
+     */
+    public jakarta.servlet.AsyncContext getAsyncContext() {
+        return this.req.getAsyncContext();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Check if async is started
+     */
+    public boolean isAsyncStarted() {
+        return this.req.isAsyncStarted();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Check if async is supported
+     */
+    public boolean isAsyncSupported() {
+        return this.req.isAsyncSupported();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Start async processing
+     */
+    public jakarta.servlet.AsyncContext startAsync()
+            throws IllegalStateException {
+        return this.req.startAsync();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Start async processing with request/response
+     */
+    public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest,
+                                                     jakarta.servlet.ServletResponse servletResponse)
+            throws IllegalStateException {
+        return this.req.startAsync(servletRequest, servletResponse);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get servlet context
+     */
+    public jakarta.servlet.ServletContext getServletContext() {
+        return this.req.getServletContext();
+    }
+
+    /**
+     * Jakarta Servlet 5.0 API - HTTP protocol upgrade support
+     * @see jakarta.servlet.http.HttpServletRequest#upgrade(Class)
+     */
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass)
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.upgrade(handlerClass);
+    }
+
 }

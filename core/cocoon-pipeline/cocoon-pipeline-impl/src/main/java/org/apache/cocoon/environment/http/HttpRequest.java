@@ -27,9 +27,9 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.WeakHashMap;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.cocoon.environment.Cookie;
 import org.apache.cocoon.environment.Session;
@@ -110,7 +110,7 @@ public final class HttpRequest extends AbstractRequest {
     private Map wrappedCookieMap = null;
     private Map cookieMap = null;
 
-    public javax.servlet.http.Cookie[] getCookies() {
+    public jakarta.servlet.http.Cookie[] getCookies() {
         return this.req.getCookies();
     }
 
@@ -123,10 +123,10 @@ public final class HttpRequest extends AbstractRequest {
 
     private synchronized void createCookieMap() {
         Map cookieMap = new HashMap();
-        javax.servlet.http.Cookie[] cookies = this.req.getCookies();
+        jakarta.servlet.http.Cookie[] cookies = this.req.getCookies();
         if (cookies != null) {
             for (int i=0; i < cookies.length; i++) {
-                javax.servlet.http.Cookie cookie = cookies[i];
+                jakarta.servlet.http.Cookie cookie = cookies[i];
                 cookieMap.put(cookie.getName(),cookie);
             }
         }
@@ -149,7 +149,7 @@ public final class HttpRequest extends AbstractRequest {
 
     private synchronized void wrapCookies() {
         this.wrappedCookieMap = new HashMap();
-        javax.servlet.http.Cookie[] cookies = this.req.getCookies();
+        jakarta.servlet.http.Cookie[] cookies = this.req.getCookies();
         if (cookies != null) {
             this.wrappedCookies = new Cookie[cookies.length];
             for(int i=0; i<cookies.length;i++) {
@@ -262,8 +262,8 @@ public final class HttpRequest extends AbstractRequest {
     /* (non-Javadoc)
      * @see org.apache.cocoon.environment.Request#getSession(boolean)
      */
-    public javax.servlet.http.HttpSession getSession(boolean create) {
-        javax.servlet.http.HttpSession serverSession = this.req.getSession(create);
+    public jakarta.servlet.http.HttpSession getSession(boolean create) {
+        jakarta.servlet.http.HttpSession serverSession = this.req.getSession(create);
         HttpSession session;
         if (serverSession != null)
         {
@@ -287,7 +287,7 @@ public final class HttpRequest extends AbstractRequest {
         return session;
     }
 
-    public javax.servlet.http.HttpSession getSession() {
+    public jakarta.servlet.http.HttpSession getSession() {
         return this.getSession(true);
     }
 
@@ -401,12 +401,79 @@ public final class HttpRequest extends AbstractRequest {
         return this.req.getContentLength();
     }
 
+    /**
+     * Jakarta Servlet 3.1 API - Get content length as long for large content
+     * @see jakarta.servlet.ServletRequest#getContentLengthLong()
+     */
+    public long getContentLengthLong() {
+        return this.req.getContentLengthLong();
+    }
+
     public String getContentType() {
         return this.req.getContentType();
     }
 
     public ServletInputStream getInputStream() throws IOException {
         return this.req.getInputStream();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get the dispatcher type
+     * @see jakarta.servlet.ServletRequest#getDispatcherType()
+     */
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return this.req.getDispatcherType();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get the async context
+     * @see jakarta.servlet.ServletRequest#getAsyncContext()
+     */
+    public jakarta.servlet.AsyncContext getAsyncContext() {
+        return this.req.getAsyncContext();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Check if async is started
+     * @see jakarta.servlet.ServletRequest#isAsyncStarted()
+     */
+    public boolean isAsyncStarted() {
+        return this.req.isAsyncStarted();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Check if async is supported
+     * @see jakarta.servlet.ServletRequest#isAsyncSupported()
+     */
+    public boolean isAsyncSupported() {
+        return this.req.isAsyncSupported();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Start async processing
+     * @see jakarta.servlet.ServletRequest#startAsync()
+     */
+    public jakarta.servlet.AsyncContext startAsync()
+            throws IllegalStateException {
+        return this.req.startAsync();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Start async processing with request/response
+     * @see jakarta.servlet.ServletRequest#startAsync(jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse)
+     */
+    public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest,
+                                                     jakarta.servlet.ServletResponse servletResponse)
+            throws IllegalStateException {
+        return this.req.startAsync(servletRequest, servletResponse);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get servlet context
+     * @see jakarta.servlet.ServletRequest#getServletContext()
+     */
+    public jakarta.servlet.ServletContext getServletContext() {
+        return this.req.getServletContext();
     }
 
     public String getParameter(String name) {
@@ -496,7 +563,7 @@ public final class HttpRequest extends AbstractRequest {
 
     /**
      * @deprecated As of Version 2.1 of the Java Servlet API, use
-     * {@link javax.servlet.ServletContext#getRealPath(java.lang.String)}instead.
+     * {@link jakarta.servlet.ServletContext#getRealPath(java.lang.String)}instead.
      */
     public String getRealPath(String path) {
         return this.req.getRealPath(path);
@@ -511,5 +578,66 @@ public final class HttpRequest extends AbstractRequest {
             result = this.getAttribute(name);
         }
         return result;
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Authenticate the request
+     * @see jakarta.servlet.http.HttpServletRequest#authenticate(jakarta.servlet.http.HttpServletResponse)
+     */
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response)
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.authenticate(response);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Login with username and password
+     * @see jakarta.servlet.http.HttpServletRequest#login(String, String)
+     */
+    public void login(String username, String password)
+            throws jakarta.servlet.ServletException {
+        this.req.login(username, password);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Logout the current user
+     * @see jakarta.servlet.http.HttpServletRequest#logout()
+     */
+    public void logout() throws jakarta.servlet.ServletException {
+        this.req.logout();
+    }
+
+    /**
+     * Jakarta Servlet 3.1 API - Change the session ID
+     * @see jakarta.servlet.http.HttpServletRequest#changeSessionId()
+     */
+    public String changeSessionId() {
+        return this.req.changeSessionId();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get a part by name from multipart/form-data request
+     * @see jakarta.servlet.http.HttpServletRequest#getPart(String)
+     */
+    public jakarta.servlet.http.Part getPart(String name)
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.getPart(name);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get all parts from multipart/form-data request
+     * @see jakarta.servlet.http.HttpServletRequest#getParts()
+     */
+    public java.util.Collection<jakarta.servlet.http.Part> getParts()
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.getParts();
+    }
+
+    /**
+     * Jakarta Servlet 5.0 API - HTTP protocol upgrade support
+     * @see jakarta.servlet.http.HttpServletRequest#upgrade(Class)
+     */
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass)
+            throws java.io.IOException, jakarta.servlet.ServletException {
+        return this.req.upgrade(handlerClass);
     }
 }

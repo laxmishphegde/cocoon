@@ -16,13 +16,15 @@
  */
 package org.apache.cocoon.environment.mock;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.cocoon.environment.Cookie;
 import org.apache.cocoon.environment.Response;
@@ -54,12 +56,12 @@ public class MockResponse extends AbstractResponse implements Response {
         return locale;
     }
 
-    public javax.servlet.http.Cookie createCookie(String name, String value) {
-        javax.servlet.http.Cookie cookie = new javax.servlet.http.Cookie(name, value);
+    public jakarta.servlet.http.Cookie createCookie(String name, String value) {
+        jakarta.servlet.http.Cookie cookie = new jakarta.servlet.http.Cookie(name, value);
         return cookie;
     }
 
-    public void addCookie(javax.servlet.http.Cookie cookie) {
+    public void addCookie(jakarta.servlet.http.Cookie cookie) {
         cookies.add(cookie);
     }
 
@@ -130,5 +132,32 @@ public class MockResponse extends AbstractResponse implements Response {
     
     public void setSession(HttpSession session) {
         this.session = session;
+    }
+
+    // Jakarta Servlet 5.0 API methods
+
+    public Collection<String> getHeaderNames() {
+        return header.keySet();
+    }
+
+    public Collection<String> getHeaders(String name) {
+        Object value = header.get(name);
+        if (value == null) {
+            return Collections.emptyList();
+        }
+        return Collections.singleton(value.toString());
+    }
+
+    public String getHeader(String name) {
+        Object value = header.get(name);
+        return value != null ? value.toString() : null;
+    }
+
+    public void setContentLengthLong(long length) {
+        header.put("Content-Length", Long.toString(length));
+    }
+
+    public int getStatus() {
+        return 200; // Mock always returns OK
     }
 }

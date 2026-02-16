@@ -22,6 +22,7 @@ import java.security.Principal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -30,8 +31,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 import junit.framework.AssertionFailedError;
 
@@ -251,12 +254,12 @@ public class MockRequest extends AbstractRequest {
     /**
      * @see org.apache.cocoon.environment.Request#getCookies()
      */
-    public javax.servlet.http.Cookie[] getCookies() {
+    public jakarta.servlet.http.Cookie[] getCookies() {
         if (cookies.isEmpty()) {
             return null;
         }
-        javax.servlet.http.Cookie[] cookieArray = new javax.servlet.http.Cookie[cookies.size()];
-        return (javax.servlet.http.Cookie[]) cookies.values().toArray(cookieArray);
+        jakarta.servlet.http.Cookie[] cookieArray = new jakarta.servlet.http.Cookie[cookies.size()];
+        return (jakarta.servlet.http.Cookie[]) cookies.values().toArray(cookieArray);
     }
 
     /**
@@ -601,6 +604,25 @@ public class MockRequest extends AbstractRequest {
             public int read() throws IOException {
                 return MockRequest.this.inputStream.read();
             }
+
+            @Override
+            public boolean isFinished() {
+                try {
+                    return MockRequest.this.inputStream.available() == 0;
+                } catch (IOException e) {
+                    return true;
+                }
+            }
+
+            @Override
+            public boolean isReady() {
+                return true;
+            }
+
+            @Override
+            public void setReadListener(jakarta.servlet.ReadListener readListener) {
+                throw new UnsupportedOperationException("Async IO not supported in mock");
+            }
         };
     }
 
@@ -631,6 +653,71 @@ public class MockRequest extends AbstractRequest {
     public Session getCocoonSession() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    // Jakarta Servlet 5.0 API methods
+
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
+        throw new UnsupportedOperationException("WebSocket upgrade not supported in mock");
+    }
+
+    public Part getPart(String name) throws IOException, ServletException {
+        return null;
+    }
+
+    public Collection<Part> getParts() throws IOException, ServletException {
+        return Collections.emptyList();
+    }
+
+    public void logout() throws ServletException {
+        // Mock implementation - no-op
+    }
+
+    public void login(String username, String password) throws ServletException {
+        // Mock implementation - no-op
+    }
+
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response) throws IOException, ServletException {
+        return false;
+    }
+
+    public String changeSessionId() {
+        if (session != null) {
+            return session.getId();
+        }
+        return null;
+    }
+
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return jakarta.servlet.DispatcherType.REQUEST;
+    }
+
+    public jakarta.servlet.AsyncContext getAsyncContext() {
+        throw new IllegalStateException("Async not supported in mock");
+    }
+
+    public boolean isAsyncSupported() {
+        return false;
+    }
+
+    public boolean isAsyncStarted() {
+        return false;
+    }
+
+    public jakarta.servlet.AsyncContext startAsync() throws IllegalStateException {
+        throw new UnsupportedOperationException("Async not supported in mock");
+    }
+
+    public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest, jakarta.servlet.ServletResponse servletResponse) throws IllegalStateException {
+        throw new UnsupportedOperationException("Async not supported in mock");
+    }
+
+    public jakarta.servlet.ServletContext getServletContext() {
+        return null;
+    }
+
+    public long getContentLengthLong() {
+        return getContentLength();
     }
 
 }

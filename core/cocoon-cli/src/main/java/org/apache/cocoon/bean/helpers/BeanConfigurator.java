@@ -26,7 +26,7 @@ import java.util.List;
 import org.apache.cocoon.bean.CocoonBean;
 import org.apache.cocoon.bean.helpers.OutputStreamListener;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;

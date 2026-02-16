@@ -17,7 +17,7 @@
 package org.apache.cocoon.components.validation.jaxp;
 
 import org.apache.cocoon.components.validation.impl.ValidationResolver;
-import org.apache.commons.lang.exception.NestableRuntimeException;
+import org.apache.commons.lang3.exception.NestableRuntimeException;
 import org.apache.excalibur.source.SourceResolver;
 import org.w3c.dom.DOMError;
 import org.w3c.dom.ls.LSException;

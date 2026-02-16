@@ -24,9 +24,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.cocoon.environment.Cookie;
 import org.apache.cocoon.environment.Request;
@@ -252,7 +252,7 @@ public abstract class AbstractRequestWrapper extends AbstractRequest {
     /* (non-Javadoc)
      * @see org.apache.cocoon.environment.Request#getCookies()
      */
-    public javax.servlet.http.Cookie[] getCookies() {
+    public jakarta.servlet.http.Cookie[] getCookies() {
         return this.req.getCookies();
     }
 
@@ -467,77 +467,77 @@ public abstract class AbstractRequestWrapper extends AbstractRequest {
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.http.HttpServletRequest#getIntHeader(java.lang.String)
+     * @see jakarta.servlet.http.HttpServletRequest#getIntHeader(java.lang.String)
      */
     public int getIntHeader(String name) {
         return this.req.getIntHeader(name);
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.http.HttpServletRequest#getRequestURL()
+     * @see jakarta.servlet.http.HttpServletRequest#getRequestURL()
      */
     public StringBuffer getRequestURL() {
         return this.req.getRequestURL();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.http.HttpServletRequest#isRequestedSessionIdFromUrl()
+     * @see jakarta.servlet.http.HttpServletRequest#isRequestedSessionIdFromUrl()
      */
     public boolean isRequestedSessionIdFromUrl() {
         return this.req.isRequestedSessionIdFromUrl();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getLocalAddr()
+     * @see jakarta.servlet.ServletRequest#getLocalAddr()
      */
     public String getLocalAddr() {
         return this.req.getLocalAddr();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getLocalName()
+     * @see jakarta.servlet.ServletRequest#getLocalName()
      */
     public String getLocalName() {
         return this.req.getLocalName();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getLocalPort()
+     * @see jakarta.servlet.ServletRequest#getLocalPort()
      */
     public int getLocalPort() {
         return this.req.getLocalPort();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getParameterMap()
+     * @see jakarta.servlet.ServletRequest#getParameterMap()
      */
     public Map getParameterMap() {
         return this.req.getParameterMap();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getReader()
+     * @see jakarta.servlet.ServletRequest#getReader()
      */
     public BufferedReader getReader() throws IOException {
         return this.req.getReader();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getRealPath(java.lang.String)
+     * @see jakarta.servlet.ServletRequest#getRealPath(java.lang.String)
      */
     public String getRealPath(String path) {
         return this.req.getRealPath(path);
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getRemotePort()
+     * @see jakarta.servlet.ServletRequest#getRemotePort()
      */
     public int getRemotePort() {
         return this.req.getRemotePort();
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getRequestDispatcher(java.lang.String)
+     * @see jakarta.servlet.ServletRequest#getRequestDispatcher(java.lang.String)
      */
     public RequestDispatcher getRequestDispatcher(String path) {
         return this.req.getRequestDispatcher(path);

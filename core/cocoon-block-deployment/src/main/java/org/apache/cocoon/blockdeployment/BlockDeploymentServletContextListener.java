@@ -22,9 +22,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
 
 public class BlockDeploymentServletContextListener implements ServletContextListener {
 
@@ -48,7 +48,7 @@ public class BlockDeploymentServletContextListener implements ServletContextList
     }
 
     private File getWorkdir(ServletContext servletContext) {
-        File workdir = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+        File workdir = (File) servletContext.getAttribute("jakarta.servlet.context.tempdir");
         if (workdir == null) {
             workdir = new File("cocoon-files");
         }

@@ -16,66 +16,75 @@
  */
 package org.apache.cocoon.forms.formmodel;
 
-import org.apache.commons.lang.enums.ValuedEnum;
-
 /**
  * The state of a widget. States are ordered from the most featured ("active")
  * to the most constrained ("invisible"), so that state combinations can be
  * computed: a widget's combined state is the strictest between the widget's own
  * state and its parent state.
- * 
+ *
  * @version $Id$
  */
-public class WidgetState extends ValuedEnum {
-
-    private static final int ACTIVE_VALUE = 4;
-    
-    private static final int DISABLED_VALUE = 3;
-
-    private static final int OUTPUT_VALUE = 2;
-
-    private static final int INVISIBLE_VALUE = 1;
+public enum WidgetState {
 
     /**
      * Active state. This is the default state, where widgets read their values
      * from the request and display them.
      */
-    public static final WidgetState ACTIVE = new WidgetState("active", ACTIVE_VALUE);
+    ACTIVE("active", 4),
 
     /**
      * Disabled state, value is displayed but user input is ignored. The widget should be
      * rendered in a manner that indicates that this widget could be active, but is currently not.
      */
-    public static final WidgetState DISABLED = new WidgetState("disabled", DISABLED_VALUE);
-    
+    DISABLED("disabled", 3),
+
     /**
      * Output state, value is displayed but user input is ignored. The widget should be rendered
      * as plain text, giving no indication that it could be input.
      */
-    public static final WidgetState OUTPUT = new WidgetState("output", OUTPUT_VALUE);
+    OUTPUT("output", 2),
 
     /**
      * Invisible state. Values are not displayed and user input is ignored.
      */
-    public static final WidgetState INVISIBLE = new WidgetState("invisible", INVISIBLE_VALUE);
+    INVISIBLE("invisible", 1);
 
-    /**
-     * Private constructor
-     */
+    private static final int ACTIVE_VALUE = 4;
+    private static final int DISABLED_VALUE = 3;
+    private static final int OUTPUT_VALUE = 2;
+    private static final int INVISIBLE_VALUE = 1;
+
+    private final String name;
+    private final int value;
+
     private WidgetState(String name, int value) {
-        super(name, value);
+        this.name = name;
+        this.value = value;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getValue() {
+        return this.value;
     }
 
     /**
      * Get a state given its name. Valid names are "active", "disabled",
-     * "invisible".
-     * 
+     * "output", "invisible".
+     *
      * @param name the state name
      * @return the state, or <code>null</code> if <code>name</code> doesn't
      *         denote a known state name
      */
     public static WidgetState stateForName(String name) {
-        return (WidgetState) getEnum(WidgetState.class, name);
+        for (WidgetState state : values()) {
+            if (state.getName().equals(name)) {
+                return state;
+            }
+        }
+        return null;
     }
 
     /**

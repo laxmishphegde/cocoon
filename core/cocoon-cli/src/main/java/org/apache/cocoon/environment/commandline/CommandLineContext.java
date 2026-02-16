@@ -45,7 +45,7 @@ public class CommandLineContext extends AbstractContext implements Context {
     }
 
     /**
-     * @see javax.servlet.ServletContext#log(java.lang.Exception, java.lang.String)
+     * @see jakarta.servlet.ServletContext#log(java.lang.Exception, java.lang.String)
      */
     public void log(Exception arg0, String arg1) {
         System.out.println(arg1);
@@ -55,7 +55,7 @@ public class CommandLineContext extends AbstractContext implements Context {
     }
 
     /**
-     * @see javax.servlet.ServletContext#log(java.lang.String, java.lang.Throwable)
+     * @see jakarta.servlet.ServletContext#log(java.lang.String, java.lang.Throwable)
      */
     public void log(String arg0, Throwable arg1) {
         System.out.println(arg0);
@@ -65,7 +65,7 @@ public class CommandLineContext extends AbstractContext implements Context {
     }
 
     /**
-     * @see javax.servlet.ServletContext#log(java.lang.String)
+     * @see jakarta.servlet.ServletContext#log(java.lang.String)
      */
     public void log(String arg0) {
         System.out.println(arg0);

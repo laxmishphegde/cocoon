@@ -17,7 +17,7 @@
 
 package org.apache.cocoon.components.elementprocessor.impl.poi.hssf.elements;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFPrintSetup;
 
 import java.io.IOException;

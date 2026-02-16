@@ -28,8 +28,8 @@ import org.apache.cocoon.xml.AttributesImpl;
 import org.apache.avalon.framework.parameters.Parameters;
 import org.apache.excalibur.xml.sax.XMLizable;
 
-import org.apache.commons.lang.SystemUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
@@ -174,9 +174,8 @@ public class ExceptionGenerator extends AbstractGenerator {
 
         // Full stack trace (if exception is chained)
         if (thr != cause) {
-            String trace = SystemUtils.isJavaVersionAtLeast(140) ?
-                    ExceptionUtils.getStackTrace(thr) :
-                    ExceptionUtils.getFullStackTrace(thr);
+            // Java 1.4+ has built-in exception chaining, so we can always use getStackTrace
+            String trace = ExceptionUtils.getStackTrace(thr);
 
             simpleElement("full-stacktrace", attr, trace, handler);
         }

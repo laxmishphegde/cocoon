@@ -22,10 +22,10 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Set;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 /**
  * @version $Id$
@@ -45,7 +45,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getContext(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getContext(java.lang.String)
      */
     public ServletContext getContext(String uripath) {
         return this.servletContext.getContext(uripath);
@@ -54,7 +54,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getMajorVersion()
+     * @see jakarta.servlet.ServletContext#getMajorVersion()
      */
     public int getMajorVersion() {
         return this.servletContext.getMajorVersion();
@@ -63,7 +63,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getMinorVersion()
+     * @see jakarta.servlet.ServletContext#getMinorVersion()
      */
     public int getMinorVersion() {
         return this.servletContext.getMinorVersion();
@@ -72,7 +72,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getMimeType(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getMimeType(java.lang.String)
      */
     public String getMimeType(String file) {
         return this.servletContext.getMimeType(file);
@@ -81,7 +81,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getResourcePaths(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getResourcePaths(java.lang.String)
      */
     public Set getResourcePaths(String paths) {
         return this.servletContext.getResourcePaths(paths);
@@ -90,7 +90,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getResource(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getResource(java.lang.String)
      */
     public URL getResource(String path) throws MalformedURLException {
         return this.servletContext.getResource(path);
@@ -99,7 +99,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getResourceAsStream(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getResourceAsStream(java.lang.String)
      */
     public InputStream getResourceAsStream(String path) {
         return this.servletContext.getResourceAsStream(path);
@@ -108,7 +108,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getRequestDispatcher(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getRequestDispatcher(java.lang.String)
      */
     public RequestDispatcher getRequestDispatcher(String path) {
         return this.servletContext.getRequestDispatcher(path);
@@ -117,7 +117,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getNamedDispatcher(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getNamedDispatcher(java.lang.String)
      */
     public RequestDispatcher getNamedDispatcher(String name) {
         return this.servletContext.getNamedDispatcher(name);
@@ -126,7 +126,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getServlet(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getServlet(java.lang.String)
      */
     public Servlet getServlet(String name) throws ServletException {
         return this.servletContext.getServlet(name);
@@ -135,7 +135,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getServlets()
+     * @see jakarta.servlet.ServletContext#getServlets()
      */
     public Enumeration getServlets() {
         return this.servletContext.getServlets();
@@ -144,7 +144,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getServletNames()
+     * @see jakarta.servlet.ServletContext#getServletNames()
      */
     public Enumeration getServletNames() {
         return this.servletContext.getServletNames();
@@ -153,7 +153,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#log(java.lang.String)
+     * @see jakarta.servlet.ServletContext#log(java.lang.String)
      */
     public void log(String msg) {
         this.servletContext.log(msg);
@@ -162,7 +162,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#log(java.lang.Exception,
+     * @see jakarta.servlet.ServletContext#log(java.lang.Exception,
      *      java.lang.String)
      */
     public void log(Exception exception, String msg) {
@@ -172,7 +172,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#log(java.lang.String,
+     * @see jakarta.servlet.ServletContext#log(java.lang.String,
      *      java.lang.Throwable)
      */
     public void log(String msg, Throwable throwable) {
@@ -182,7 +182,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getRealPath(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getRealPath(java.lang.String)
      */
     public String getRealPath(String path) {
         return this.servletContext.getRealPath(path);
@@ -191,7 +191,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getServerInfo()
+     * @see jakarta.servlet.ServletContext#getServerInfo()
      */
     public String getServerInfo() {
         return this.servletContext.getServerInfo();
@@ -200,7 +200,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getInitParameter(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getInitParameter(java.lang.String)
      */
     public String getInitParameter(String path) {
         return this.servletContext.getInitParameter(path);
@@ -209,7 +209,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getInitParameterNames()
+     * @see jakarta.servlet.ServletContext#getInitParameterNames()
      */
     public Enumeration getInitParameterNames() {
         return this.servletContext.getInitParameterNames();
@@ -218,7 +218,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getAttribute(java.lang.String)
+     * @see jakarta.servlet.ServletContext#getAttribute(java.lang.String)
      */
     public Object getAttribute(String name) {
         return this.servletContext.getAttribute(name);
@@ -227,7 +227,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getAttributeNames()
+     * @see jakarta.servlet.ServletContext#getAttributeNames()
      */
     public Enumeration getAttributeNames() {
         return this.servletContext.getAttributeNames();
@@ -236,7 +236,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#setAttribute(java.lang.String,
+     * @see jakarta.servlet.ServletContext#setAttribute(java.lang.String,
      *      java.lang.Object)
      */
     public void setAttribute(String name, Object value) {
@@ -246,7 +246,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#removeAttribute(java.lang.String)
+     * @see jakarta.servlet.ServletContext#removeAttribute(java.lang.String)
      */
     public void removeAttribute(String name) {
         this.servletContext.removeAttribute(name);
@@ -255,7 +255,7 @@ public class ServletContextWrapper implements ServletContext {
     /*
      * (non-Javadoc)
      * 
-     * @see javax.servlet.ServletContext#getServletContextName()
+     * @see jakarta.servlet.ServletContext#getServletContextName()
      */
     public String getServletContextName() {
         return this.servletContext.getServletContextName();

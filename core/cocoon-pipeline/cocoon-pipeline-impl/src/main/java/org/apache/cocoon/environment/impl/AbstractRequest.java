@@ -20,7 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
+import jakarta.servlet.RequestDispatcher;
 
 import org.apache.cocoon.environment.Request;
 
@@ -59,7 +59,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.http.HttpServletRequest#getRequestURL()
+     * @see jakarta.servlet.http.HttpServletRequest#getRequestURL()
      */
     public StringBuffer getRequestURL() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -67,7 +67,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getLocalAddr()
+     * @see jakarta.servlet.ServletRequest#getLocalAddr()
      */
     public String getLocalAddr() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -75,7 +75,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getLocalName()
+     * @see jakarta.servlet.ServletRequest#getLocalName()
      */
     public String getLocalName() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -83,7 +83,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getLocalPort()
+     * @see jakarta.servlet.ServletRequest#getLocalPort()
      */
     public int getLocalPort() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -91,7 +91,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getParameterMap()
+     * @see jakarta.servlet.ServletRequest#getParameterMap()
      */
     public Map getParameterMap() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -99,7 +99,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getRemotePort()
+     * @see jakarta.servlet.ServletRequest#getRemotePort()
      */
     public int getRemotePort() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -107,7 +107,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.http.HttpServletRequest#isRequestedSessionIdFromUrl()
+     * @see jakarta.servlet.http.HttpServletRequest#isRequestedSessionIdFromUrl()
      */
     public boolean isRequestedSessionIdFromUrl() {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -115,7 +115,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getReader()
+     * @see jakarta.servlet.ServletRequest#getReader()
      */
     public BufferedReader getReader() throws IOException {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -123,7 +123,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getRealPath(java.lang.String)
+     * @see jakarta.servlet.ServletRequest#getRealPath(java.lang.String)
      */
     public String getRealPath(String path) {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
@@ -131,7 +131,7 @@ public abstract class AbstractRequest
     }
 
     /* (non-Javadoc)
-     * @see javax.servlet.ServletRequest#getRequestDispatcher(java.lang.String)
+     * @see jakarta.servlet.ServletRequest#getRequestDispatcher(java.lang.String)
      */
     public RequestDispatcher getRequestDispatcher(String path) {
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method

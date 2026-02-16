@@ -23,8 +23,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.cocoon.Constants;
 import org.apache.cocoon.environment.Cookie;
@@ -32,8 +32,8 @@ import org.apache.cocoon.environment.Environment;
 import org.apache.cocoon.environment.Session;
 import org.apache.cocoon.environment.impl.AbstractRequest;
 import org.apache.commons.collections.IteratorUtils;
-import org.apache.commons.lang.NotImplementedException;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.NotImplementedException;
+import org.apache.commons.lang3.SystemUtils;
 
 /**
  * Creates a specific servlet request simulation from command line usage.
@@ -282,7 +282,7 @@ public class BackgroundRequest extends AbstractRequest {
     public String getMethod() { return "get"; }
     public String getRemoteUser() { return SystemUtils.USER_NAME; }
 
-    public javax.servlet.http.Cookie[] getCookies() { return null; }
+    public jakarta.servlet.http.Cookie[] getCookies() { return null; }
     public Map getCookieMap() {
         return Collections.unmodifiableMap(new HashMap());
     }
@@ -444,5 +444,125 @@ public class BackgroundRequest extends AbstractRequest {
             result = this.getAttribute(name);
         }
         return result;
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#upgrade(java.lang.Class)
+     */
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("WebSocket upgrade not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#getPart(java.lang.String)
+     */
+    public jakarta.servlet.http.Part getPart(String name) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Multipart requests not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#getParts()
+     */
+    public java.util.Collection<jakarta.servlet.http.Part> getParts() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Multipart requests not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#logout()
+     */
+    public void logout() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Authentication not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#login(java.lang.String, java.lang.String)
+     */
+    public void login(String username, String password) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Authentication not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#authenticate(jakarta.servlet.http.HttpServletResponse)
+     */
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Authentication not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.http.HttpServletRequest#changeSessionId()
+     */
+    public String changeSessionId() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Session management not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns REQUEST for background requests
+     * @see jakarta.servlet.ServletRequest#getDispatcherType()
+     */
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return jakarta.servlet.DispatcherType.REQUEST;
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.ServletRequest#getAsyncContext()
+     */
+    public jakarta.servlet.AsyncContext getAsyncContext() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Async processing not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - async not supported in background requests
+     * @see jakarta.servlet.ServletRequest#isAsyncSupported()
+     */
+    public boolean isAsyncSupported() {
+        return false;
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - async not started in background requests
+     * @see jakarta.servlet.ServletRequest#isAsyncStarted()
+     */
+    public boolean isAsyncStarted() {
+        return false;
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns null for background requests
+     * @see jakarta.servlet.ServletRequest#getServletContext()
+     */
+    public jakarta.servlet.ServletContext getServletContext() {
+        return null;
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.ServletRequest#startAsync()
+     */
+    public jakarta.servlet.AsyncContext startAsync() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Async processing not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - not supported in background requests
+     * @see jakarta.servlet.ServletRequest#startAsync(jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse)
+     */
+    public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest, jakarta.servlet.ServletResponse servletResponse) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Async processing not supported in background requests");
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns -1 (unknown) for background requests
+     * @see jakarta.servlet.ServletRequest#getContentLengthLong()
+     */
+    public long getContentLengthLong() {
+        return -1L;
     }
 }

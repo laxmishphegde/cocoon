@@ -30,7 +30,7 @@ import org.apache.cocoon.forms.validation.ValidationErrorAware;
 import org.apache.cocoon.xml.AttributesImpl;
 import org.apache.cocoon.xml.XMLUtils;
 
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 
@@ -90,7 +90,7 @@ public class BooleanField extends AbstractWidget
         Object oldValue = value;
         String param = formContext.getRequest().getParameter(getRequestParameterName());
 
-        value = BooleanUtils.toBooleanObject(definition.getTrueParamValue().equals(param));
+        value = Boolean.valueOf(definition.getTrueParamValue().equals(param));
 
         if (!value.equals(oldValue)) {
             getForm().addWidgetEvent(new ValueChangedEvent(this, oldValue, value));

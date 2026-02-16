@@ -28,7 +28,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * A collection of <code>File</code>, <code>URL</code> and filename
@@ -365,7 +365,7 @@ public class NetUtils {
      * Remove parameters from a uri.
      * Passed in parameters map will be populated with parameter names as keys and
      * parameter values as map values. Values are of type String array
-     * (similarly to {@link javax.servlet.ServletRequest#getParameterMap()}).
+     * (similarly to {@link jakarta.servlet.ServletRequest#getParameterMap()}).
      * 
      * @param uri The uri path to deparameterize.
      * @param parameters The map that collects parameters.

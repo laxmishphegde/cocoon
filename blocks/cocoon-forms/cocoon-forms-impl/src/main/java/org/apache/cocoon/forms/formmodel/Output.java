@@ -28,7 +28,7 @@ import org.apache.cocoon.forms.event.ValueChangedListenerEnabled;
 import org.apache.cocoon.forms.event.WidgetEvent;
 import org.apache.cocoon.forms.event.WidgetEventMulticaster;
 import org.apache.cocoon.xml.XMLUtils;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 

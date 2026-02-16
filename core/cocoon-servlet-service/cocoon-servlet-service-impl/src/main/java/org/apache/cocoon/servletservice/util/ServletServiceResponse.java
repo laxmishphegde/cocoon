@@ -27,9 +27,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Creates a {@link HttpServletResponse} object that is usable for internal block calls.
@@ -145,6 +145,16 @@ public class ServletServiceResponse implements HttpServletResponse {
                 @Override
                 public void close() throws IOException {
                     ServletServiceResponse.this.outputStream.close();
+                }
+
+                @Override
+                public boolean isReady() {
+                    return true;
+                }
+
+                @Override
+                public void setWriteListener(jakarta.servlet.WriteListener writeListener) {
+                    throw new UnsupportedOperationException("Async IO not supported in servlet service responses");
                 }
 
             };
@@ -275,5 +285,19 @@ public class ServletServiceResponse implements HttpServletResponse {
 
     public void setCharacterEncoding(String arg0) {
         // TODO Auto-generated method stub
+    }
+
+    // Jakarta Servlet 5.0 API compatibility methods
+    public java.util.Collection<String> getHeaderNames() {
+        return this.headers != null ? this.headers.keySet() : java.util.Collections.emptyList();
+    }
+
+    public java.util.Collection<String> getHeaders(String name) {
+        String value = getHeader(name);
+        return value != null ? java.util.Collections.singletonList(value) : java.util.Collections.emptyList();
+    }
+
+    public void setContentLengthLong(long length) {
+        this.setHeader("Content-Length", String.valueOf(length));
     }
 }

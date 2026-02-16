@@ -20,8 +20,8 @@ import org.apache.avalon.excalibur.pool.Recyclable;
 import org.apache.cocoon.components.language.programming.CompilerError;
 import org.apache.cocoon.components.language.programming.LanguageCompiler;
 import org.apache.cocoon.util.ClassUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 import org.eclipse.jdt.core.compiler.IProblem;
 import org.eclipse.jdt.internal.compiler.ClassFile;
@@ -363,7 +363,10 @@ public class EclipseJavaCompiler implements LanguageCompiler, Recyclable {
                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_1_3);
         }
         // Set the target platform
-        switch (SystemUtils.JAVA_VERSION_INT) {
+        // Commons-lang3 removed JAVA_VERSION_INT, compute it from specification version
+        String javaSpec = SystemUtils.JAVA_SPECIFICATION_VERSION;
+        int javaVersionInt = Integer.parseInt(javaSpec.contains(".") ? javaSpec.split("\\.")[1] : javaSpec) * 100;
+        switch (javaVersionInt) {
             case 180:
                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_1_8);
                 break;

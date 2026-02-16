@@ -42,7 +42,7 @@ public class StringUtils {
      * @deprecated Use commons lang instead.
      */
     public static String[] split(String line, String delimiter) {
-        return org.apache.commons.lang.StringUtils.split(line, delimiter);
+        return org.apache.commons.lang3.StringUtils.split(line, delimiter);
     }
 
     /**

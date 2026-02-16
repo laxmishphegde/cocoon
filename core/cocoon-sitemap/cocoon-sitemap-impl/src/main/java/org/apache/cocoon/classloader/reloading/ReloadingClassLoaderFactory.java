@@ -20,7 +20,7 @@ package org.apache.cocoon.classloader.reloading;
 //import java.net.URL;
 //import java.util.List;
 //
-//import javax.servlet.ServletContext;
+//import jakarta.servlet.ServletContext;
 //
 //import org.apache.cocoon.classloader.AbstractClassLoaderFactory;
 //import org.apache.cocoon.classloader.ClassLoaderConfiguration;
@@ -41,7 +41,7 @@ public class ReloadingClassLoaderFactory { // extends AbstractClassLoaderFactory
 //    private final static Log log = LogFactory.getLog(ReloadingListener.class);
 //    
 //    /**
-//     * @see org.apache.cocoon.classloader.AbstractClassLoaderFactory#createClassLoader(java.lang.ClassLoader, org.apache.cocoon.classloader.ClassLoaderConfiguration, javax.servlet.ServletContext)
+//     * @see org.apache.cocoon.classloader.AbstractClassLoaderFactory#createClassLoader(java.lang.ClassLoader, org.apache.cocoon.classloader.ClassLoaderConfiguration, jakarta.servlet.ServletContext)
 //     */
 //    public ClassLoader createClassLoader(ClassLoader              parent,
 //                                         ClassLoaderConfiguration configuration,

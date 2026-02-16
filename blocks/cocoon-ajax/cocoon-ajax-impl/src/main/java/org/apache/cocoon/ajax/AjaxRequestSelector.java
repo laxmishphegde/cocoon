@@ -22,7 +22,7 @@ import org.apache.avalon.framework.parameters.Parameters;
 import org.apache.cocoon.environment.ObjectModelHelper;
 import org.apache.cocoon.environment.Request;
 import org.apache.cocoon.selection.AbstractSwitchSelector;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * Chooses a select branch depending on if the current request is an Ajax request.
@@ -50,7 +50,7 @@ public class AjaxRequestSelector extends AbstractSwitchSelector {
     
     public Object getSelectorContext(Map objectModel, Parameters parameters) {
         Request req = ObjectModelHelper.getRequest(objectModel);
-        return BooleanUtils.toBooleanObject(AjaxHelper.isAjaxRequest(req));
+        return Boolean.valueOf(AjaxHelper.isAjaxRequest(req));
     }
 
     public boolean select(String expression, Object selectorContext) {

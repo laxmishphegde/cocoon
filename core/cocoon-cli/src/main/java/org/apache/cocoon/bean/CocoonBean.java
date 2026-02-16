@@ -25,7 +25,7 @@ import org.apache.cocoon.components.notification.Notifier;
 import org.apache.cocoon.components.notification.DefaultNotifyingBuilder;
 import org.apache.cocoon.components.notification.Notifying;
 import org.apache.cocoon.util.WildcardMatcherHelper;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 import org.apache.excalibur.source.ModifiableSource;
 import org.apache.excalibur.source.SourceResolver;

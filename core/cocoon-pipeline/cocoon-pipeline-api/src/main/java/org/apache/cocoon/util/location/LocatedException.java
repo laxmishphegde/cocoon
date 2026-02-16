@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
-
 /**
  * A cascading and located <code>Exception</code>. It is also {@link MultiLocatable} to easily build
  * stack traces.
@@ -61,7 +59,7 @@ public class LocatedException extends Exception
     public static void ensureCauseChainIsSet(Throwable thr) {
         // Loop either until null or encountering exceptions that use this method.
         while (thr != null && !(thr instanceof LocatedRuntimeException) && !(thr instanceof LocatedException)) {
-            Throwable parent = ExceptionUtils.getCause(thr);
+            Throwable parent = thr.getCause();
             if (thr.getCause() == null && parent != null) {
                 thr.initCause(parent);
             }
@@ -90,7 +88,7 @@ public class LocatedException extends Exception
         }
 
         // Add parent location first
-        addCauseLocations(self, ExceptionUtils.getCause(cause));
+        addCauseLocations(self, cause.getCause());
         // then ourselve's
         Location loc = LocationUtils.getLocation(cause);
         if (LocationUtils.isKnown(loc)) {

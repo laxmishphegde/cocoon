@@ -41,7 +41,7 @@ import org.apache.cocoon.xml.AttributesImpl;
 import org.apache.cocoon.xml.XMLConsumer;
 import org.apache.cocoon.xml.XMLUtils;
 import org.apache.commons.collections.ArrayStack;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
@@ -230,7 +230,7 @@ public class JXMacrosHelper {
         }
 
         if (display) {
-            this.widgetStack.push(BooleanUtils.toBooleanObject(inUpdatedTemplate));
+            this.widgetStack.push(Boolean.valueOf(inUpdatedTemplate));
             this.widgetStack.push(widget);
         }
         

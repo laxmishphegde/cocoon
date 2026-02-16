@@ -48,7 +48,7 @@ public class DeprecationTestCase extends TestCase {
         consoleLogger = new SimpleLog("test");
         consoleLogger.setLevel(SimpleLog.LOG_LEVEL_OFF);
         Deprecation.setLogger(consoleLogger);
-        Deprecation.setForbiddenLevel(Deprecation.ERROR);
+        Deprecation.setForbiddenLevel(Deprecation.LogLevel.ERROR);
     }
     
     public void tearDown() throws Exception {
@@ -90,7 +90,7 @@ public class DeprecationTestCase extends TestCase {
     }
     
     public void testDebugFails() {
-        Deprecation.setForbiddenLevel(Deprecation.DEBUG);
+        Deprecation.setForbiddenLevel(Deprecation.LogLevel.DEBUG);
         try {
             Deprecation.logger.debug("testing deprecation logs");
         } catch(DeprecationException de) {

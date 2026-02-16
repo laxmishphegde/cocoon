@@ -42,8 +42,8 @@ import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.apache.avalon.framework.parameters.Parameters;
 import org.apache.avalon.framework.service.ServiceException;
 import org.apache.avalon.framework.service.ServiceManager;
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.excalibur.xml.sax.SAXParser;
 
 import org.apache.cocoon.ProcessingException;
@@ -499,8 +499,10 @@ public class SQLTransformer extends AbstractSAXTransformer {
                                                SQLTransformer.MAGIC_SUBSTITUTE_VALUE_NAME_ATTRIBUTE + " attribute");
                 }
                 String substitute = parameters.getParameter(name, null);
-                // Escape single quote
-                substitute = StringEscapeUtils.escapeSql(substitute);
+                // Escape single quote (commons-lang3 removed escapeSql, using simple replacement)
+                if (substitute != null) {
+                    substitute = substitute.replace("'", "''");
+                }
 
                 final String value = endTextRecording();
                 if (value.length() > 0) {
@@ -548,7 +550,8 @@ public class SQLTransformer extends AbstractSAXTransformer {
             case SQLTransformer.STATE_INSIDE_ESCAPE_STRING:
                 String value = endTextRecording();
                 if (value.length() > 0) {
-                    value = StringEscapeUtils.escapeSql(value);
+                    // Escape SQL (commons-lang3 removed escapeSql, using simple replacement)
+                    value = value.replace("'", "''");
                     value = StringUtils.replace(value, "\\", "\\\\");
                     query.addQueryPart(value);
                 }

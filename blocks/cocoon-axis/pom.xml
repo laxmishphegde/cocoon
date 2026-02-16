@@ -17,6 +17,15 @@
   specific language governing permissions and limitations
   under the License.
 -->
+<!--
+  DEPRECATED: This block uses obsolete Apache Axis 1.x (released 2006) and
+  javax.xml.rpc APIs with known security vulnerabilities. It is excluded from
+  default builds and will be removed in Cocoon 2.4.0.
+
+  To build this block: mvn install -DincludeAxis
+
+  Migration path: Use Jakarta XML Web Services or REST APIs instead.
+-->
 <!-- $Id: pom.xml 1907411 2023-02-05 12:01:56Z javier $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>

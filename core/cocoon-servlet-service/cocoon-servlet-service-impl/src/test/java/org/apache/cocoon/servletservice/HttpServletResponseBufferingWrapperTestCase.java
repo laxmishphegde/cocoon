@@ -20,8 +20,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 
 import junit.framework.TestCase;
 
@@ -195,15 +195,25 @@ public class HttpServletResponseBufferingWrapperTestCase extends TestCase {
      *
      */
     private class CountingServletOutputStream extends ServletOutputStream {
-        
+
         private int counter = 0;
 
         public void write(int arg0) throws IOException {
             counter++;
         }
-        
+
         public int getCounter() {
             return counter;
+        }
+
+        @Override
+        public boolean isReady() {
+            return true;
+        }
+
+        @Override
+        public void setWriteListener(jakarta.servlet.WriteListener writeListener) {
+            throw new UnsupportedOperationException("Async IO not supported in test");
         }
     }
     

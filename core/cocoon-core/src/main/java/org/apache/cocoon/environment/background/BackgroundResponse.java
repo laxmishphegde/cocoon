@@ -16,6 +16,8 @@
  */
 package org.apache.cocoon.environment.background;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 
 import org.apache.cocoon.environment.Cookie;
@@ -30,8 +32,8 @@ import org.apache.cocoon.environment.impl.AbstractResponse;
 public class BackgroundResponse extends AbstractResponse implements Response {
 
     public String getCharacterEncoding() { return null; }
-    public javax.servlet.http.Cookie createCookie(String name, String value) { return null; }
-    public void addCookie(javax.servlet.http.Cookie cookie) {}
+    public jakarta.servlet.http.Cookie createCookie(String name, String value) { return null; }
+    public void addCookie(jakarta.servlet.http.Cookie cookie) {}
     public Cookie createCocoonCookie(String name, String value) { return null; }
     public void addCookie(Cookie cookie) {}
     public boolean containsHeader(String name) { return false; }
@@ -44,5 +46,45 @@ public class BackgroundResponse extends AbstractResponse implements Response {
     public void addDateHeader(String name, long date) { }
     public void addHeader(String name, String value) { }
     public void addIntHeader(String name, int value) { }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns empty collection for background responses
+     * @see jakarta.servlet.http.HttpServletResponse#getHeaderNames()
+     */
+    public Collection<String> getHeaderNames() {
+        return Collections.emptyList();
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns empty collection for background responses
+     * @see jakarta.servlet.http.HttpServletResponse#getHeaders(java.lang.String)
+     */
+    public Collection<String> getHeaders(String name) {
+        return Collections.emptyList();
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns null for background responses
+     * @see jakarta.servlet.http.HttpServletResponse#getHeader(java.lang.String)
+     */
+    public String getHeader(String name) {
+        return null;
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - returns 200 OK status for background responses
+     * @see jakarta.servlet.http.HttpServletResponse#getStatus()
+     */
+    public int getStatus() {
+        return 200; // HTTP OK
+    }
+
+    /**
+     * Jakarta Servlet 5.0 method - no-op for background responses
+     * @see jakarta.servlet.ServletResponse#setContentLengthLong(long)
+     */
+    public void setContentLengthLong(long length) {
+        // No-op for background responses
+    }
 
 }

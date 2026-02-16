@@ -20,8 +20,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.cocoon.environment.Cookie;
 import org.apache.cocoon.environment.Response;
@@ -48,11 +48,11 @@ public final class HttpResponse extends AbstractResponse implements Response {
     /**
      * Create a new cookie which is not added to the response
      */
-    public javax.servlet.http.Cookie createCookie(String name, String value) {
-        return new javax.servlet.http.Cookie(name, value);
+    public jakarta.servlet.http.Cookie createCookie(String name, String value) {
+        return new jakarta.servlet.http.Cookie(name, value);
     }
 
-    public void addCookie(javax.servlet.http.Cookie cookie) {
+    public void addCookie(jakarta.servlet.http.Cookie cookie) {
         this.res.addCookie(cookie);
     }
 
@@ -64,8 +64,8 @@ public final class HttpResponse extends AbstractResponse implements Response {
         if (cookie instanceof HttpCookie) {
             this.res.addCookie(((HttpCookie)cookie).getServletCookie());
         } else {
-            javax.servlet.http.Cookie newCookie;
-            newCookie = new javax.servlet.http.Cookie(cookie.getName(), cookie.getValue());
+            jakarta.servlet.http.Cookie newCookie;
+            newCookie = new jakarta.servlet.http.Cookie(cookie.getName(), cookie.getValue());
             newCookie.setComment(cookie.getComment());
             newCookie.setDomain(cookie.getDomain());
             newCookie.setMaxAge(cookie.getMaxAge());
@@ -140,6 +140,14 @@ public final class HttpResponse extends AbstractResponse implements Response {
     }
 
     /**
+     * Jakarta Servlet 3.0 API - Get the status code
+     * @see jakarta.servlet.http.HttpServletResponse#getStatus()
+     */
+    public int getStatus() {
+        return this.res.getStatus();
+    }
+
+    /**
      * @deprecated        As of version 2.1, use encodeURL(String url) instead
      */
     public String encodeUrl(String url) {
@@ -184,6 +192,14 @@ public final class HttpResponse extends AbstractResponse implements Response {
         this.res.setContentLength(len);
     }
 
+    /**
+     * Jakarta Servlet 3.1 API - Set content length as long
+     * @see jakarta.servlet.ServletResponse#setContentLengthLong(long)
+     */
+    public void setContentLengthLong(long len) {
+        this.res.setContentLengthLong(len);
+    }
+
     public void setContentType(String type) {
         this.res.setContentType(type);
     }
@@ -214,6 +230,30 @@ public final class HttpResponse extends AbstractResponse implements Response {
 
     public Locale getLocale() {
         return this.res.getLocale();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get all header names
+     * @see jakarta.servlet.http.HttpServletResponse#getHeaderNames()
+     */
+    public java.util.Collection<String> getHeaderNames() {
+        return this.res.getHeaderNames();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get header values by name
+     * @see jakarta.servlet.http.HttpServletResponse#getHeaders(String)
+     */
+    public java.util.Collection<String> getHeaders(String name) {
+        return this.res.getHeaders(name);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get a single header value by name
+     * @see jakarta.servlet.http.HttpServletResponse#getHeader(String)
+     */
+    public String getHeader(String name) {
+        return this.res.getHeader(name);
     }
 
 }

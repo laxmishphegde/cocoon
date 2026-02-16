@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.apache.cocoon.portal.util.PortalUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * A coplet definition describes an available coplet. A coplet definition can be seen

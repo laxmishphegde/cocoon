@@ -18,7 +18,7 @@ package org.apache.cocoon.servlet.multipart;
 
 import java.io.File;
 
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.logging.Log;
 
 import org.apache.cocoon.configuration.Settings;

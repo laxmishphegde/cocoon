@@ -79,7 +79,7 @@ public class ApplicationCopletAdapter extends CocoonCopletAdapter {
 
                 // append parameters - if any
                 LinkService linkService = this.portalService.getLinkService();
-                final javax.servlet.http.HttpServletRequest r = this.portalService.getRequestContext().getRequest();
+                final jakarta.servlet.http.HttpServletRequest r = this.portalService.getRequestContext().getRequest();
                 final Enumeration params = r.getParameterNames();
                 while (params.hasMoreElements()) {
                     final String name = (String)params.nextElement();

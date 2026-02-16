@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.apache.cocoon.configuration.MutableSettings;
 import org.apache.cocoon.configuration.PropertyHelper;
@@ -94,7 +94,7 @@ public abstract class AbstractSettingsBeanFactoryPostProcessor
     }
 
     /**
-     * @see org.springframework.web.context.ServletContextAware#setServletContext(javax.servlet.ServletContext)
+     * @see org.springframework.web.context.ServletContextAware#setServletContext(jakarta.servlet.ServletContext)
      */
     public void setServletContext(ServletContext sContext) {
         this.servletContext = sContext;
@@ -305,14 +305,14 @@ public abstract class AbstractSettingsBeanFactoryPostProcessor
         extends BeanDefinitionVisitor {
 
         protected final Properties props;
-        protected final Set visitedPlaceholders = new HashSet();
 
         public CocoonSettingsResolvingBeanDefinitionVisitor(Settings settings) {
             this.props = new SettingsProperties(settings);
         }
 
         protected String resolveStringValue(String strVal) {
-            return parseStringValue(strVal, this.props, visitedPlaceholders);
+            // Spring 6.x: Use resolvePlaceholder instead of parseStringValue
+            return resolvePlaceholder(strVal, this.props);
         }
     }
 

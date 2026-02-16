@@ -30,7 +30,7 @@ import org.apache.cocoon.taglib.Tag;
  * to facilitate implementation.</p>
  * 
  * Migration from JSTL1.0
- * @see javax.servlet.jsp.jstl.core.LoopTag
+ * @see jakarta.servlet.jsp.jstl.core.LoopTag
  *
  * @version $Id$
  */

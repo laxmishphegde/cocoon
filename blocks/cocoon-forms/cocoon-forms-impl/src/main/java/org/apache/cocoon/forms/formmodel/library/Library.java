@@ -27,7 +27,7 @@ import org.apache.cocoon.forms.formmodel.WidgetDefinitionBuilderContext;
 import org.apache.cocoon.forms.util.DomHelper;
 import org.apache.cocoon.util.location.LocationAttributes;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.w3c.dom.Element;

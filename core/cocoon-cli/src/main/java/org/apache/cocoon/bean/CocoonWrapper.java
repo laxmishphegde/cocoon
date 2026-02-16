@@ -48,7 +48,7 @@ import org.apache.cocoon.util.IOUtils;
 import org.apache.cocoon.util.NetUtils;
 import org.apache.cocoon.xml.ContentHandlerWrapper;
 import org.apache.cocoon.xml.XMLConsumer;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.xml.sax.ContentHandler;
 
 /**

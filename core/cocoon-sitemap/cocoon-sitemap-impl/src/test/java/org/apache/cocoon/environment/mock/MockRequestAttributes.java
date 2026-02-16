@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.cocoon.environment.Request;
 import org.springframework.web.context.request.RequestAttributes;
@@ -86,12 +86,7 @@ public class MockRequestAttributes implements RequestAttributes {
         if (scope == RequestAttributes.SCOPE_SESSION) {
             this.request.removeAttribute(key);
         }
-        if (scope == RequestAttributes.SCOPE_GLOBAL_SESSION) {
-            final HttpSession session = this.request.getSession(false);
-            if (session != null) {
-                session.removeAttribute(key);
-            }
-        }
+        // Note: SCOPE_GLOBAL_SESSION was removed in Spring 6
     }
 
     /**
@@ -106,10 +101,7 @@ public class MockRequestAttributes implements RequestAttributes {
         if (scope == RequestAttributes.SCOPE_SESSION) {
             this.request.setAttribute(key, value);
         }
-        if (scope == RequestAttributes.SCOPE_GLOBAL_SESSION) {
-            final HttpSession session = this.request.getSession(true);
-            session.setAttribute(key, value);
-        }
+        // Note: SCOPE_GLOBAL_SESSION was removed in Spring 6
     }
 
     /**

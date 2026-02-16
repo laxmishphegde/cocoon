@@ -47,7 +47,7 @@ import org.apache.cocoon.environment.portlet.PortletContext;
 import org.apache.cocoon.environment.portlet.PortletEnvironment;
 import org.apache.cocoon.portlet.multipart.MultipartActionRequest;
 import org.apache.cocoon.portlet.multipart.RequestFactory;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * This is the entry point for Cocoon execution as an JSR-168 Portlet.
@@ -206,7 +206,7 @@ public class ManagedCocoonPortlet extends GenericPortlet {
             }
         } else {
             // TODO: Check portlet specification
-            this.workDir = (File) this.portletContext.getAttribute("javax.servlet.context.tempdir");
+            this.workDir = (File) this.portletContext.getAttribute("jakarta.servlet.context.tempdir");
             if (this.workDir == null) {
                 this.workDir = new File(this.portletContext.getRealPath("/WEB-INF/work"));
             }

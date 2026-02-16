@@ -21,8 +21,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
 
 import org.apache.cocoon.environment.impl.AbstractContext;
 
@@ -159,5 +159,288 @@ public final class HttpContext extends AbstractContext {
      */
     public void log(Exception exception, String msg) {
         this.servletContext.log(msg, exception);
+    }
+
+    /**
+     * Jakarta Servlet 4.0 API - Set the response character encoding
+     * @see jakarta.servlet.ServletContext#setResponseCharacterEncoding(String)
+     */
+    public void setResponseCharacterEncoding(String encoding) {
+        this.servletContext.setResponseCharacterEncoding(encoding);
+    }
+
+    /**
+     * Jakarta Servlet 4.0 API - Get the response character encoding
+     * @see jakarta.servlet.ServletContext#getResponseCharacterEncoding()
+     */
+    public String getResponseCharacterEncoding() {
+        return this.servletContext.getResponseCharacterEncoding();
+    }
+
+    /**
+     * Jakarta Servlet 4.0 API - Set the request character encoding
+     * @see jakarta.servlet.ServletContext#setRequestCharacterEncoding(String)
+     */
+    public void setRequestCharacterEncoding(String encoding) {
+        this.servletContext.setRequestCharacterEncoding(encoding);
+    }
+
+    /**
+     * Jakarta Servlet 4.0 API - Get the request character encoding
+     * @see jakarta.servlet.ServletContext#getRequestCharacterEncoding()
+     */
+    public String getRequestCharacterEncoding() {
+        return this.servletContext.getRequestCharacterEncoding();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Set the session timeout
+     * @see jakarta.servlet.ServletContext#setSessionTimeout(int)
+     */
+    public void setSessionTimeout(int sessionTimeout) {
+        this.servletContext.setSessionTimeout(sessionTimeout);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get the session timeout
+     * @see jakarta.servlet.ServletContext#getSessionTimeout()
+     */
+    public int getSessionTimeout() {
+        return this.servletContext.getSessionTimeout();
+    }
+
+    /**
+     * Jakarta Servlet 4.0 API - Get the virtual server name
+     * @see jakarta.servlet.ServletContext#getVirtualServerName()
+     */
+    public String getVirtualServerName() {
+        return this.servletContext.getVirtualServerName();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Declare roles
+     * @see jakarta.servlet.ServletContext#declareRoles(String...)
+     */
+    public void declareRoles(String... roleNames) {
+        this.servletContext.declareRoles(roleNames);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Set init parameter
+     * @see jakarta.servlet.ServletContext#setInitParameter(String, String)
+     */
+    public boolean setInitParameter(String name, String value) {
+        return this.servletContext.setInitParameter(name, value);
+    }
+
+    /**
+     * Jakarta Servlet 2.5 API - Get context path
+     * @see jakarta.servlet.ServletContext#getContextPath()
+     */
+    public String getContextPath() {
+        return this.servletContext.getContextPath();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get class loader
+     * @see jakarta.servlet.ServletContext#getClassLoader()
+     */
+    public ClassLoader getClassLoader() {
+        return this.servletContext.getClassLoader();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get effective major version
+     * @see jakarta.servlet.ServletContext#getEffectiveMajorVersion()
+     */
+    public int getEffectiveMajorVersion() {
+        return this.servletContext.getEffectiveMajorVersion();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get effective minor version
+     * @see jakarta.servlet.ServletContext#getEffectiveMinorVersion()
+     */
+    public int getEffectiveMinorVersion() {
+        return this.servletContext.getEffectiveMinorVersion();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get JSP config descriptor
+     * @see jakarta.servlet.ServletContext#getJspConfigDescriptor()
+     */
+    public jakarta.servlet.descriptor.JspConfigDescriptor getJspConfigDescriptor() {
+        return this.servletContext.getJspConfigDescriptor();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Create listener instance
+     * @see jakarta.servlet.ServletContext#createListener(Class)
+     */
+    public <T extends java.util.EventListener> T createListener(Class<T> clazz)
+            throws jakarta.servlet.ServletException {
+        return this.servletContext.createListener(clazz);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add listener
+     * @see jakarta.servlet.ServletContext#addListener(String)
+     */
+    public void addListener(String className) {
+        this.servletContext.addListener(className);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add listener
+     * @see jakarta.servlet.ServletContext#addListener(Class)
+     */
+    public void addListener(Class<? extends java.util.EventListener> listenerClass) {
+        this.servletContext.addListener(listenerClass);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add listener
+     * @see jakarta.servlet.ServletContext#addListener(java.util.EventListener)
+     */
+    public void addListener(java.util.EventListener t) {
+        this.servletContext.addListener(t);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Create filter instance
+     * @see jakarta.servlet.ServletContext#createFilter(Class)
+     */
+    public <T extends jakarta.servlet.Filter> T createFilter(Class<T> clazz)
+            throws jakarta.servlet.ServletException {
+        return this.servletContext.createFilter(clazz);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Create servlet instance
+     * @see jakarta.servlet.ServletContext#createServlet(Class)
+     */
+    public <T extends jakarta.servlet.Servlet> T createServlet(Class<T> clazz)
+            throws jakarta.servlet.ServletException {
+        return this.servletContext.createServlet(clazz);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get filter registration
+     * @see jakarta.servlet.ServletContext#getFilterRegistration(String)
+     */
+    public jakarta.servlet.FilterRegistration getFilterRegistration(String filterName) {
+        return this.servletContext.getFilterRegistration(filterName);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get filter registrations
+     * @see jakarta.servlet.ServletContext#getFilterRegistrations()
+     */
+    public java.util.Map<String, ? extends jakarta.servlet.FilterRegistration> getFilterRegistrations() {
+        return this.servletContext.getFilterRegistrations();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get servlet registration
+     * @see jakarta.servlet.ServletContext#getServletRegistration(String)
+     */
+    public jakarta.servlet.ServletRegistration getServletRegistration(String servletName) {
+        return this.servletContext.getServletRegistration(servletName);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get servlet registrations
+     * @see jakarta.servlet.ServletContext#getServletRegistrations()
+     */
+    public java.util.Map<String, ? extends jakarta.servlet.ServletRegistration> getServletRegistrations() {
+        return this.servletContext.getServletRegistrations();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get session cookie config
+     * @see jakarta.servlet.ServletContext#getSessionCookieConfig()
+     */
+    public jakarta.servlet.SessionCookieConfig getSessionCookieConfig() {
+        return this.servletContext.getSessionCookieConfig();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Set session tracking modes
+     * @see jakarta.servlet.ServletContext#setSessionTrackingModes(java.util.Set)
+     */
+    public void setSessionTrackingModes(java.util.Set<jakarta.servlet.SessionTrackingMode> sessionTrackingModes) {
+        this.servletContext.setSessionTrackingModes(sessionTrackingModes);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get default session tracking modes
+     * @see jakarta.servlet.ServletContext#getDefaultSessionTrackingModes()
+     */
+    public java.util.Set<jakarta.servlet.SessionTrackingMode> getDefaultSessionTrackingModes() {
+        return this.servletContext.getDefaultSessionTrackingModes();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Get effective session tracking modes
+     * @see jakarta.servlet.ServletContext#getEffectiveSessionTrackingModes()
+     */
+    public java.util.Set<jakarta.servlet.SessionTrackingMode> getEffectiveSessionTrackingModes() {
+        return this.servletContext.getEffectiveSessionTrackingModes();
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add filter with name and class name
+     * @see jakarta.servlet.ServletContext#addFilter(String, String)
+     */
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
+        return this.servletContext.addFilter(filterName, className);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add filter with name and filter instance
+     * @see jakarta.servlet.ServletContext#addFilter(String, jakarta.servlet.Filter)
+     */
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, jakarta.servlet.Filter filter) {
+        return this.servletContext.addFilter(filterName, filter);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add filter with name and class
+     * @see jakarta.servlet.ServletContext#addFilter(String, Class)
+     */
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, Class<? extends jakarta.servlet.Filter> filterClass) {
+        return this.servletContext.addFilter(filterName, filterClass);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add servlet with name and class name
+     * @see jakarta.servlet.ServletContext#addServlet(String, String)
+     */
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, String className) {
+        return this.servletContext.addServlet(servletName, className);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add servlet with name and servlet instance
+     * @see jakarta.servlet.ServletContext#addServlet(String, jakarta.servlet.Servlet)
+     */
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, jakarta.servlet.Servlet servlet) {
+        return this.servletContext.addServlet(servletName, servlet);
+    }
+
+    /**
+     * Jakarta Servlet 3.0 API - Add servlet with name and class
+     * @see jakarta.servlet.ServletContext#addServlet(String, Class)
+     */
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, Class<? extends jakarta.servlet.Servlet> servletClass) {
+        return this.servletContext.addServlet(servletName, servletClass);
+    }
+
+    /**
+     * Jakarta Servlet 4.0 API - Add JSP file
+     * @see jakarta.servlet.ServletContext#addJspFile(String, String)
+     */
+    public jakarta.servlet.ServletRegistration.Dynamic addJspFile(String servletName, String jspFile) {
+        return this.servletContext.addJspFile(servletName, jspFile);
     }
 }

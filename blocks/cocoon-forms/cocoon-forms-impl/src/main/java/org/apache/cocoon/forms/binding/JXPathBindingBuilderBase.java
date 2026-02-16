@@ -20,7 +20,7 @@ import java.util.Map;
 
 import org.apache.cocoon.forms.util.DomHelper;
 import org.apache.commons.jxpath.AbstractFactory;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.w3c.dom.Element;
 
 /**

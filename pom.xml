@@ -1152,7 +1152,7 @@
   </distributionManagement>
 
   <properties>
-    <targetJdk>1.8</targetJdk>
+    <targetJdk>21</targetJdk>
     <maven.version>2.0.11</maven.version>
 
     <!-- General doc properties -->
@@ -1276,8 +1276,8 @@
     <asm.version>2.2.1</asm.version>
     <batik.version>1.16</batik.version>
     <slf4j.version>2.0.6</slf4j.version>
-    <!-- TODO: This is the latest Spring version that we support -->
-    <spring.version>4.3.30.RELEASE</spring.version>
+    <!-- Updated to Spring 6.x for Jakarta EE 9+ support -->
+    <spring.version>6.1.14</spring.version>
     <logback.version>1.4.5</logback.version>
     <exlipse.jdt.version>3.33.0</exlipse.jdt.version>
   </properties>
@@ -1341,8 +1341,8 @@
             <groupId>avalon-framework</groupId>
           </exclusion>
           <exclusion>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -1367,9 +1367,9 @@
         <version>2.0.2</version>
       </dependency>
       <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>jstl</artifactId>
-        <version>1.2</version>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>2.0.0</version>
       </dependency>
       <dependency>
         <groupId>jaxen</groupId>
@@ -1409,12 +1409,12 @@
         <version>1.4</version>
         <exclusions>
           <exclusion>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
+            <groupId>jakarta.mail</groupId>
+            <artifactId>jakarta.mail-api</artifactId>
           </exclusion>
           <exclusion>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -1717,7 +1717,7 @@
           </exclusion>
           <exclusion>
             <artifactId>servlet</artifactId>
-            <groupId>javax.servlet</groupId>
+            <groupId>jakarta.servlet</groupId>
           </exclusion>
           <exclusion>
             <artifactId>servletapi</artifactId>
@@ -1740,6 +1740,11 @@
             <groupId>commons-logging</groupId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.12.0</version>
       </dependency>
       <dependency>
         <groupId>commons-lang</groupId>
@@ -2000,9 +2005,9 @@
         </exclusions>
       </dependency>
       <dependency>
-        <groupId>org.apache.geronimo.specs</groupId>
-        <artifactId>geronimo-jms_1.1_spec</artifactId>
-        <version>1.0</version>
+        <groupId>jakarta.jms</groupId>
+        <artifactId>jakarta.jms-api</artifactId>
+        <version>3.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.geronimo.specs</groupId>
@@ -2057,8 +2062,8 @@
       <dependency>
         <groupId>javax.jcr</groupId>
         <artifactId>jcr</artifactId>
-        <!-- TODO: 2.0 is latest -->
-        <version>1.0</version>
+        <!-- JSR-283 JCR 2.0 (JCR is not part of Jakarta EE) -->
+        <version>2.0</version>
       </dependency>
       <dependency>
         <groupId>jdom</groupId>
@@ -2112,9 +2117,9 @@
         <version>1.6R7</version>
       </dependency>
       <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>jsp-api</artifactId>
-        <version>2.0</version>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet.jsp-api</artifactId>
+        <version>3.0.0</version>
       </dependency>
       <dependency>
         <groupId>jtidy</groupId>
@@ -2143,9 +2148,9 @@
         <version>2.9.4</version>
       </dependency>
       <dependency>
-        <groupId>javax.mail</groupId>
-        <artifactId>mail</artifactId>
-        <version>1.4.7</version>
+        <groupId>jakarta.mail</groupId>
+        <artifactId>jakarta.mail-api</artifactId>
+        <version>2.0.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.maven</groupId>
@@ -2228,7 +2233,7 @@
       <dependency>
         <groupId>javax.portlet</groupId>
         <artifactId>portlet-api</artifactId>
-        <version>1.0</version>
+        <version>3.0.0</version>
       </dependency>
       <dependency>
         <groupId>qdox</groupId>
@@ -2242,10 +2247,10 @@
         <version>1.5.1</version>
       </dependency>
       <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>servlet-api</artifactId>
-        <!-- version 2.5 requires minor changes -->
-        <version>2.4</version>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <!-- Updated to Jakarta EE 9 -->
+        <version>5.0.0</version>
       </dependency>
       <dependency>
         <groupId>slide</groupId>
@@ -2570,7 +2575,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.11.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.rat</groupId>

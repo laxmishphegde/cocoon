@@ -26,7 +26,7 @@ import org.apache.cocoon.auth.ApplicationManager;
 import org.apache.cocoon.auth.AuthenticationException;
 import org.apache.cocoon.auth.SecurityHandler;
 import org.apache.cocoon.auth.User;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * The simple security handler implements the {@link SecurityHandler} interface.

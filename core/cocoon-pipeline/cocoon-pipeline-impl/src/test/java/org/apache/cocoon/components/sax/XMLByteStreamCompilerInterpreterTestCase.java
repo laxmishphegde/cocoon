@@ -90,8 +90,13 @@ public final class XMLByteStreamCompilerInterpreterTestCase extends AbstractXMLT
         }
         long stop = System.currentTimeMillis();
 
-        double r = 1000*loop/(stop-start);
-        System.out.println("consuming: "+ r + " documents per second");
+        long elapsed = stop - start;
+        if (elapsed > 0) {
+            double r = 1000*loop/elapsed;
+            System.out.println("consuming: "+ r + " documents per second");
+        } else {
+            System.out.println("consuming: completed in < 1ms (too fast to measure with millisecond precision)");
+        }
     }
 
     public void testCompareToParsing() throws Exception {
@@ -117,8 +122,13 @@ public final class XMLByteStreamCompilerInterpreterTestCase extends AbstractXMLT
         }
         long stop = System.currentTimeMillis();
 
-        double r = 1000*loop/(stop-start);
-        System.out.println("parsed: " + r + " documents per second");
+        long elapsed = stop - start;
+        if (elapsed > 0) {
+            double r = 1000*loop/elapsed;
+            System.out.println("parsed: " + r + " documents per second");
+        } else {
+            System.out.println("parsed: completed in < 1ms (too fast to measure with millisecond precision)");
+        }
 
 
         XMLByteStreamInterpreter xmli = new XMLByteStreamInterpreter();
@@ -132,7 +142,12 @@ public final class XMLByteStreamCompilerInterpreterTestCase extends AbstractXMLT
         }
         stop = System.currentTimeMillis();
 
-        r = 1000*loop/(stop-start);
-        System.out.println("recalling: " + r + " documents per second");
+        elapsed = stop - start;
+        if (elapsed > 0) {
+            double r = 1000*loop/elapsed;
+            System.out.println("recalling: " + r + " documents per second");
+        } else {
+            System.out.println("recalling: completed in < 1ms (too fast to measure with millisecond precision)");
+        }
     }
 }

@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
-
 /**
  * A cascading and located <code>RuntimeException</code>. It is also {@link MultiLocatable} to easily build
  * location stack traces.
@@ -30,11 +28,14 @@ import org.apache.commons.lang.exception.NestableRuntimeException;
  * <code>LocatedRuntimeException</code>, then the default behavior is to add the location to the cause
  * exception and immediately rethrow the cause. This avoids exception nesting and builds a location
  * stack.
+ * <p>
+ * Note: In commons-lang 2.x this extended NestableRuntimeException, but that class was removed in
+ * commons-lang3 since Java 1.4+ has built-in exception chaining.
  *
  * @since 2.1.8
  * @version $Id$
  */
-public class LocatedRuntimeException extends NestableRuntimeException
+public class LocatedRuntimeException extends RuntimeException
                                      implements LocatableException, MultiLocatable {
 
     private List locations;

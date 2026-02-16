@@ -21,9 +21,9 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Set;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
 
 /**
  * **********************************************************************

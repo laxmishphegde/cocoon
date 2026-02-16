@@ -31,7 +31,7 @@ import org.apache.avalon.framework.service.ServiceException;
 import org.apache.avalon.framework.service.ServiceManager;
 import org.apache.avalon.framework.service.Serviceable;
 import org.apache.avalon.framework.thread.ThreadSafe;
-import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 import org.apache.cocoon.components.classloader.ClassLoaderManager;
 import org.apache.cocoon.components.language.LanguageException;
@@ -116,7 +116,10 @@ public class JavaLanguage extends CompiledProgrammingLanguage
         // Get the compiler compliance level (source Code version)
         String sourceVer = params.getParameter("compiler-compliance-level", "auto");
         if (sourceVer.equalsIgnoreCase("auto")) {
-            this.compilerComplianceLevel = SystemUtils.JAVA_VERSION_INT;
+            // Commons-lang3 removed JAVA_VERSION_INT, parse from specification version
+            String javaSpec = SystemUtils.JAVA_SPECIFICATION_VERSION;
+            int majorVersion = Integer.parseInt(javaSpec.contains(".") ? javaSpec.split("\\.")[1] : javaSpec);
+            this.compilerComplianceLevel = majorVersion * 100;
         } else {
             try {
                 compilerComplianceLevel = new Float(Float.parseFloat(sourceVer) * 100).intValue();

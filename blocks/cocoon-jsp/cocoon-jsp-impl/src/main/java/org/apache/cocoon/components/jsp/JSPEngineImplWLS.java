@@ -19,12 +19,12 @@ package org.apache.cocoon.components.jsp;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Locale;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.avalon.framework.parameters.ParameterException;
 import org.apache.avalon.framework.parameters.Parameterizable;
@@ -46,7 +46,7 @@ public class JSPEngineImplWLS extends AbstractLogEnabled
                               implements JSPEngine, Parameterizable, ThreadSafe {
 
     /** The Servlet Include Path */
-    public static final String INC_SERVLET_PATH = "javax.servlet.include.servlet_path";
+    public static final String INC_SERVLET_PATH = "jakarta.servlet.include.servlet_path";
 
     /** config-parameter name for specifying the jsp servlet-name.
       ie. servlet-name

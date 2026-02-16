@@ -16,7 +16,7 @@
  */
 package org.apache.cocoon.servletservice.util;
 
-import javax.servlet.ServletInputStream;
+import jakarta.servlet.ServletInputStream;
 
 import java.io.IOException;
 
@@ -32,6 +32,21 @@ public class NullServletInputStream extends ServletInputStream {
 
     public int read() throws IOException {
         return -1;
+    }
+
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
+
+    @Override
+    public boolean isReady() {
+        return true;
+    }
+
+    @Override
+    public void setReadListener(jakarta.servlet.ReadListener readListener) {
+        throw new UnsupportedOperationException("Async IO not supported in null servlet input stream");
     }
 
 }
