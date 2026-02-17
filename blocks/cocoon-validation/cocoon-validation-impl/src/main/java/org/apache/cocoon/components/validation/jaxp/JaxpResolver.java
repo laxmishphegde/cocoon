@@ -17,7 +17,6 @@
 package org.apache.cocoon.components.validation.jaxp;
 
 import org.apache.cocoon.components.validation.impl.ValidationResolver;
-import org.apache.commons.lang3.exception.NestableRuntimeException;
 import org.apache.excalibur.source.SourceResolver;
 import org.w3c.dom.DOMError;
 import org.w3c.dom.ls.LSException;
@@ -67,7 +66,7 @@ implements LSResourceResolver {
         } catch (Exception exception) {
             String message = "Exception resolving resource " + systemId;
             Throwable err = new LSException(DOMError.SEVERITY_FATAL_ERROR, message);
-            throw new NestableRuntimeException(message, err);
+            throw new RuntimeException(message, err);
         }
     }
 }

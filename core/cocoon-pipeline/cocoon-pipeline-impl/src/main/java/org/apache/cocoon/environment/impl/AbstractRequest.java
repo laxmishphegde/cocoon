@@ -137,4 +137,60 @@ public abstract class AbstractRequest
         // TODO The method was added when Request was made extending HttpServletRequest, implement the method
         throw new UnsupportedOperationException();
     }
+
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServletRequest#upgrade(java.lang.Class)
+     */
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, jakarta.servlet.ServletException {
+        // Jakarta Servlet API 5.0+ method for HTTP protocol upgrade
+        throw new UnsupportedOperationException("HTTP protocol upgrade is not supported");
+    }
+
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServletRequest#getPart(java.lang.String)
+     */
+    public jakarta.servlet.http.Part getPart(String name) throws IOException, jakarta.servlet.ServletException {
+        // Jakarta Servlet API 3.0+ method for multipart file upload
+        throw new UnsupportedOperationException("Multipart file upload support not implemented");
+    }
+
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServletRequest#getParts()
+     */
+    public java.util.Collection<jakarta.servlet.http.Part> getParts() throws IOException, jakarta.servlet.ServletException {
+        // Jakarta Servlet API 3.0+ method for multipart file upload
+        throw new UnsupportedOperationException("Multipart file upload support not implemented");
+    }
+
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServletRequest#logout()
+     */
+    public void logout() throws jakarta.servlet.ServletException {
+        // Jakarta Servlet API 3.0+ method for logout
+        throw new UnsupportedOperationException("Logout support not implemented");
+    }
+
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServletRequest#login(java.lang.String, java.lang.String)
+     */
+    public void login(String username, String password) throws jakarta.servlet.ServletException {
+        // Jakarta Servlet API 3.0+ method for login
+        throw new UnsupportedOperationException("Login support not implemented");
+    }
+
+    /* (non-Javadoc)
+     * @see jakarta.servlet.http.HttpServletRequest#authenticate(jakarta.servlet.http.HttpServletResponse)
+     */
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response) throws IOException, jakarta.servlet.ServletException {
+        // Jakarta Servlet API 3.0+ method for authentication
+        throw new UnsupportedOperationException("Authentication support not implemented");
+    }
+
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return jakarta.servlet.DispatcherType.REQUEST;
+    }
+
+    public String changeSessionId() {
+        throw new UnsupportedOperationException("Session ID change not supported");
+    }
 }

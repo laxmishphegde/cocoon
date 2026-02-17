@@ -261,4 +261,144 @@ public class ServletContextWrapper implements ServletContext {
         return this.servletContext.getServletContextName();
     }
 
+    public String getContextPath() {
+        return this.servletContext.getContextPath();
+    }
+
+    public String getResponseCharacterEncoding() {
+        return this.servletContext.getResponseCharacterEncoding();
+    }
+
+    public void setResponseCharacterEncoding(String encoding) {
+        this.servletContext.setResponseCharacterEncoding(encoding);
+    }
+
+    public void setRequestCharacterEncoding(String encoding) {
+        this.servletContext.setRequestCharacterEncoding(encoding);
+    }
+
+    public String getRequestCharacterEncoding() {
+        return this.servletContext.getRequestCharacterEncoding();
+    }
+
+    public void setSessionTimeout(int sessionTimeout) {
+        this.servletContext.setSessionTimeout(sessionTimeout);
+    }
+
+    public int getSessionTimeout() {
+        return this.servletContext.getSessionTimeout();
+    }
+
+    public String getVirtualServerName() {
+        return this.servletContext.getVirtualServerName();
+    }
+
+    public void declareRoles(String... roleNames) {
+        this.servletContext.declareRoles(roleNames);
+    }
+
+    public jakarta.servlet.descriptor.JspConfigDescriptor getJspConfigDescriptor() {
+        return this.servletContext.getJspConfigDescriptor();
+    }
+
+    public ClassLoader getClassLoader() {
+        return this.servletContext.getClassLoader();
+    }
+
+    public int getEffectiveMajorVersion() {
+        return this.servletContext.getEffectiveMajorVersion();
+    }
+
+    public int getEffectiveMinorVersion() {
+        return this.servletContext.getEffectiveMinorVersion();
+    }
+
+    public boolean setInitParameter(String name, String value) {
+        return this.servletContext.setInitParameter(name, value);
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, String className) {
+        return this.servletContext.addServlet(servletName, className);
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, Servlet servlet) {
+        return this.servletContext.addServlet(servletName, servlet);
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, Class<? extends Servlet> servletClass) {
+        return this.servletContext.addServlet(servletName, servletClass);
+    }
+
+    public jakarta.servlet.ServletRegistration.Dynamic addJspFile(String servletName, String jspFile) {
+        return this.servletContext.addJspFile(servletName, jspFile);
+    }
+
+    public <T extends Servlet> T createServlet(Class<T> clazz) throws ServletException {
+        return this.servletContext.createServlet(clazz);
+    }
+
+    public jakarta.servlet.ServletRegistration getServletRegistration(String servletName) {
+        return this.servletContext.getServletRegistration(servletName);
+    }
+
+    public java.util.Map<String, ? extends jakarta.servlet.ServletRegistration> getServletRegistrations() {
+        return this.servletContext.getServletRegistrations();
+    }
+
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
+        return this.servletContext.addFilter(filterName, className);
+    }
+
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, jakarta.servlet.Filter filter) {
+        return this.servletContext.addFilter(filterName, filter);
+    }
+
+    public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, Class<? extends jakarta.servlet.Filter> filterClass) {
+        return this.servletContext.addFilter(filterName, filterClass);
+    }
+
+    public <T extends jakarta.servlet.Filter> T createFilter(Class<T> clazz) throws ServletException {
+        return this.servletContext.createFilter(clazz);
+    }
+
+    public jakarta.servlet.FilterRegistration getFilterRegistration(String filterName) {
+        return this.servletContext.getFilterRegistration(filterName);
+    }
+
+    public java.util.Map<String, ? extends jakarta.servlet.FilterRegistration> getFilterRegistrations() {
+        return this.servletContext.getFilterRegistrations();
+    }
+
+    public jakarta.servlet.SessionCookieConfig getSessionCookieConfig() {
+        return this.servletContext.getSessionCookieConfig();
+    }
+
+    public void setSessionTrackingModes(Set<jakarta.servlet.SessionTrackingMode> sessionTrackingModes) {
+        this.servletContext.setSessionTrackingModes(sessionTrackingModes);
+    }
+
+    public Set<jakarta.servlet.SessionTrackingMode> getDefaultSessionTrackingModes() {
+        return this.servletContext.getDefaultSessionTrackingModes();
+    }
+
+    public Set<jakarta.servlet.SessionTrackingMode> getEffectiveSessionTrackingModes() {
+        return this.servletContext.getEffectiveSessionTrackingModes();
+    }
+
+    public void addListener(String className) {
+        this.servletContext.addListener(className);
+    }
+
+    public <T extends java.util.EventListener> void addListener(T t) {
+        this.servletContext.addListener(t);
+    }
+
+    public void addListener(Class<? extends java.util.EventListener> listenerClass) {
+        this.servletContext.addListener(listenerClass);
+    }
+
+    public <T extends java.util.EventListener> T createListener(Class<T> clazz) throws ServletException {
+        return this.servletContext.createListener(clazz);
+    }
+
 }

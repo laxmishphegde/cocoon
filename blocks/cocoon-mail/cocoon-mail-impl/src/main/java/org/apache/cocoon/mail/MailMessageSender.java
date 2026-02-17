@@ -547,11 +547,11 @@ public class MailMessageSender extends AbstractLogEnabled
     /**
      * Sets the destination address(es) for the message. The address
      * is in the format, that
-     * {@link javax.mail.internet.InternetAddress#parse(String)} can handle
+     * {@link jakarta.mail.internet.InternetAddress#parse(String)} can handle
      * (one or more email addresses separated by a commas).
      *
      * @param to the destination address(es)
-     * @see javax.mail.internet.InternetAddress#parse(String)
+     * @see jakarta.mail.internet.InternetAddress#parse(String)
      */
     public void setTo(String to) {
         if (!isNullOrEmpty(to)) {
@@ -562,11 +562,11 @@ public class MailMessageSender extends AbstractLogEnabled
     /**
      * Sets the reply-to address(es) for the message. The address
      * is in the format, that
-     * {@link javax.mail.internet.InternetAddress#parse(String)} can handle
+     * {@link jakarta.mail.internet.InternetAddress#parse(String)} can handle
      * (one or more email addresses separated by a commas).
      *
      * @param replyTo the address(es) that replies should be sent to
-     * @see javax.mail.internet.InternetAddress#parse(String)
+     * @see jakarta.mail.internet.InternetAddress#parse(String)
      */
     public void setReplyTo(String replyTo) {
         if (!isNullOrEmpty(replyTo)) {
@@ -577,11 +577,11 @@ public class MailMessageSender extends AbstractLogEnabled
     /**
      * Sets the address(es), which should receive a carbon copy of the
      * message. The address is in the format, that
-     * {@link javax.mail.internet.InternetAddress#parse(String)} can handle
+     * {@link jakarta.mail.internet.InternetAddress#parse(String)} can handle
      * (one or more email addresses separated by a commas).
      *
      * @param cc the address(es), which should receive a carbon copy.
-     * @see javax.mail.internet.InternetAddress#parse(String)
+     * @see jakarta.mail.internet.InternetAddress#parse(String)
      */
     public void setCc(String cc) {
         if (!isNullOrEmpty(cc)) {
@@ -592,11 +592,11 @@ public class MailMessageSender extends AbstractLogEnabled
     /**
      * Sets the address(es), which should receive a black carbon copy of
      * the message. The address is in the format, that
-     * {@link javax.mail.internet.InternetAddress#parse(String)} can handle
+     * {@link jakarta.mail.internet.InternetAddress#parse(String)} can handle
      * (one or more email addresses separated by a commas).
      *
      * @param bcc the address(es), which should receive a black carbon copy.
-     * @see javax.mail.internet.InternetAddress#parse(String)
+     * @see jakarta.mail.internet.InternetAddress#parse(String)
      */
     public void setBcc(String bcc) {
         if (!isNullOrEmpty(bcc)) {

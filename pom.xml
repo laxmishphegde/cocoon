@@ -1151,6 +1151,20 @@
     </site>
   </distributionManagement>
 
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Maven Central</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <properties>
     <targetJdk>21</targetJdk>
     <maven.version>2.0.11</maven.version>
@@ -2117,9 +2131,9 @@
         <version>1.6R7</version>
       </dependency>
       <dependency>
-        <groupId>jakarta.servlet</groupId>
+        <groupId>jakarta.servlet.jsp</groupId>
         <artifactId>jakarta.servlet.jsp-api</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
       </dependency>
       <dependency>
         <groupId>jtidy</groupId>

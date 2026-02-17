@@ -168,8 +168,14 @@ public class BlockCallHttpServletResponse implements HttpServletResponse {
                 public void close() throws IOException {
                     BlockCallHttpServletResponse.this.outputStream.close();
                 }
-                
-                
+
+                public boolean isReady() {
+                    return true;
+                }
+
+                public void setWriteListener(jakarta.servlet.WriteListener writeListener) {
+                    throw new UnsupportedOperationException("Async I/O is not supported");
+                }
             };
         }
  
@@ -314,6 +320,26 @@ public class BlockCallHttpServletResponse implements HttpServletResponse {
 
     public void setCharacterEncoding(String arg0) {
         // TODO Auto-generated method stub
-        
+
+    }
+
+    public java.util.Collection<String> getHeaderNames() {
+        return java.util.Collections.emptyList();
+    }
+
+    public java.util.Collection<String> getHeaders(String name) {
+        return java.util.Collections.emptyList();
+    }
+
+    public String getHeader(String name) {
+        return null;
+    }
+
+    public int getStatus() {
+        return 200;
+    }
+
+    public void setContentLengthLong(long len) {
+        // Ignore
     }
 }

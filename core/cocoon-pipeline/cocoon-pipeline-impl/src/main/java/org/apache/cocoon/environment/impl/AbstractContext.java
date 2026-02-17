@@ -213,4 +213,78 @@ public abstract class AbstractContext
     public Map getAttributes() {
 	    return new ContextMap(this);
     }
+
+    /**
+     * @see jakarta.servlet.ServletContext#getResponseCharacterEncoding()
+     */
+    public String getResponseCharacterEncoding() {
+        // Jakarta Servlet API 5.0+ method
+        return null;
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#setResponseCharacterEncoding(java.lang.String)
+     */
+    public void setResponseCharacterEncoding(String encoding) {
+        // Jakarta Servlet API 5.0+ method
+        // Default implementation does nothing
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#setRequestCharacterEncoding(java.lang.String)
+     */
+    public void setRequestCharacterEncoding(String encoding) {
+        // Jakarta Servlet API 5.0+ method
+        // Default implementation does nothing
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#getRequestCharacterEncoding()
+     */
+    public String getRequestCharacterEncoding() {
+        // Jakarta Servlet API 5.0+ method
+        return null;
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#setSessionTimeout(int)
+     */
+    public void setSessionTimeout(int sessionTimeout) {
+        // Jakarta Servlet API 4.0+ method
+        // Default implementation does nothing
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#getSessionTimeout()
+     */
+    public int getSessionTimeout() {
+        // Jakarta Servlet API 4.0+ method
+        // Return default session timeout (30 minutes in seconds)
+        return 1800;
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#getVirtualServerName()
+     */
+    public String getVirtualServerName() {
+        // Jakarta Servlet API 5.0+ method
+        // Return null as virtual server name is not configured
+        return null;
+    }
+
+    /**
+     * @see jakarta.servlet.ServletContext#declareRoles(java.lang.String...)
+     */
+    public void declareRoles(String... roleNames) {
+        // Jakarta Servlet API 3.0+ method for declaring security roles
+        // Default implementation does nothing
+    }
+
+    public jakarta.servlet.descriptor.JspConfigDescriptor getJspConfigDescriptor() {
+        return null;
+    }
+
+    public ClassLoader getClassLoader() {
+        return this.getClass().getClassLoader();
+    }
 }

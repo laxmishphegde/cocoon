@@ -535,4 +535,70 @@ public class BlockCallHttpServletRequest implements HttpServletRequest{
         return 0;
     }
 
+    public <T extends jakarta.servlet.http.HttpUpgradeHandler> T upgrade(Class<T> handlerClass)
+    throws IOException, jakarta.servlet.ServletException {
+        // Jakarta Servlet API 5.0+ method for HTTP protocol upgrade
+        throw new UnsupportedOperationException("HTTP protocol upgrade is not supported");
+    }
+
+    public jakarta.servlet.AsyncContext startAsync() throws IllegalStateException {
+        throw new UnsupportedOperationException("Async processing is not supported");
+    }
+
+    public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest,
+                                                     jakarta.servlet.ServletResponse servletResponse)
+    throws IllegalStateException {
+        throw new UnsupportedOperationException("Async processing is not supported");
+    }
+
+    public boolean isAsyncStarted() {
+        return false;
+    }
+
+    public boolean isAsyncSupported() {
+        return false;
+    }
+
+    public jakarta.servlet.AsyncContext getAsyncContext() {
+        throw new IllegalStateException("Request is not in async mode");
+    }
+
+    public jakarta.servlet.DispatcherType getDispatcherType() {
+        return jakarta.servlet.DispatcherType.REQUEST;
+    }
+
+    public long getContentLengthLong() {
+        return getContentLength();
+    }
+
+    public ServletContext getServletContext() {
+        return null;
+    }
+
+    public jakarta.servlet.http.Part getPart(String name) throws IOException, jakarta.servlet.ServletException {
+        throw new UnsupportedOperationException("Multipart file upload support not implemented");
+    }
+
+    public java.util.Collection<jakarta.servlet.http.Part> getParts()
+    throws IOException, jakarta.servlet.ServletException {
+        throw new UnsupportedOperationException("Multipart file upload support not implemented");
+    }
+
+    public void logout() throws jakarta.servlet.ServletException {
+        throw new UnsupportedOperationException("Logout support not implemented");
+    }
+
+    public void login(String username, String password) throws jakarta.servlet.ServletException {
+        throw new UnsupportedOperationException("Login support not implemented");
+    }
+
+    public boolean authenticate(jakarta.servlet.http.HttpServletResponse response)
+    throws IOException, jakarta.servlet.ServletException {
+        throw new UnsupportedOperationException("Authentication support not implemented");
+    }
+
+    public String changeSessionId() {
+        throw new UnsupportedOperationException("Session ID change not supported");
+    }
+
 }

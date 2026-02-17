@@ -114,18 +114,18 @@ public class MailAction extends ServiceableAction
         }
 
         // assert mailSession is available
-        javax.mail.Session mailSession;
+        jakarta.mail.Session mailSession;
         Store mailStore;
         try {
             try {
-                mailSession = (javax.mail.Session) mailContext.get(MailContext.MAIL_SESSION_ENTRY);
+                mailSession = (jakarta.mail.Session) mailContext.get(MailContext.MAIL_SESSION_ENTRY);
             } catch (ContextException ce) {
                 // build session properties
                 Properties sessionProperties = new Properties();
                 String[] allParameterNames = par.getNames();
                 for (int i = 0; i < allParameterNames.length; i++) {
                     String parameterName = allParameterNames[i];
-                    final String PARAMETER_NAME_PREFIX = "javax.mail.Session.props:";
+                    final String PARAMETER_NAME_PREFIX = "jakarta.mail.Session.props:";
                     if (parameterName.startsWith(PARAMETER_NAME_PREFIX)) {
                         String sessionPropName = parameterName.substring(PARAMETER_NAME_PREFIX.length());
                         String sessionPropValue = par.getParameter(parameterName, null);
@@ -137,7 +137,7 @@ public class MailAction extends ServiceableAction
                         }
                     }
                 }
-                mailSession = javax.mail.Session.getDefaultInstance(sessionProperties, null);
+                mailSession = jakarta.mail.Session.getDefaultInstance(sessionProperties, null);
                 checkProviders(mailSession);
                 mailContext.put(MailContext.MAIL_SESSION_ENTRY, mailSession);
             }
@@ -272,7 +272,7 @@ public class MailAction extends ServiceableAction
      *
      * @param  session  The javamail Session used for checking its providers.
      */
-    protected void checkProviders(javax.mail.Session session) {
+    protected void checkProviders(jakarta.mail.Session session) {
         Provider[] providers = session.getProviders();
         // just log the available providers
         for (int i = 0; i < providers.length; i++) {

@@ -162,6 +162,12 @@
       <artifactId>jakarta.servlet-api</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- Excalibur DataSource for database blocks -->
+    <dependency>
+      <groupId>org.apache.excalibur.components</groupId>
+      <artifactId>excalibur-datasource</artifactId>
+    </dependency>
   </dependencies>
 
   <profiles>
@@ -279,11 +285,11 @@
           <artifactId>cocoon-cron-sample</artifactId>
           <version>2.3.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
           <groupId>org.apache.cocoon</groupId>
           <artifactId>cocoon-databases-sample</artifactId>
           <version>2.3.1-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
         <!--<dependency>
           <groupId>org.apache.cocoon</groupId>
           <artifactId>cocoon-deli-sample</artifactId>
@@ -429,11 +435,13 @@
           <artifactId>cocoon-scratchpad-sample</artifactId>
           <version>2.3.1-SNAPSHOT</version>
         </dependency>
+        <!-- session-fw is deprecated and throws exception on startup
         <dependency>
           <groupId>org.apache.cocoon</groupId>
           <artifactId>cocoon-session-fw-sample</artifactId>
           <version>2.3.1-SNAPSHOT</version>
         </dependency>
+        -->
         <!-- Breaks currently cocoon-webapp
         <dependency>
           <groupId>org.apache.cocoon</groupId>
