@@ -424,6 +424,47 @@ public final class JXPathCocoonContexts implements Contextualizable, ThreadSafe 
         public Session getCocoonSession() {
             return this.delegate.getCocoonSession();
         }
+
+        // Jakarta Servlet 5.0 async support - not supported by Cocoon Request
+        public jakarta.servlet.AsyncContext getAsyncContext() {
+            throw new UnsupportedOperationException("Async operations not supported");
+        }
+
+        public boolean isAsyncSupported() {
+            return false;
+        }
+
+        public boolean isAsyncStarted() {
+            return false;
+        }
+
+        public jakarta.servlet.AsyncContext startAsync() throws IllegalStateException {
+            throw new UnsupportedOperationException("Async operations not supported");
+        }
+
+        public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest request, jakarta.servlet.ServletResponse response) throws IllegalStateException {
+            throw new UnsupportedOperationException("Async operations not supported");
+        }
+
+        public jakarta.servlet.ServletContext getServletContext() {
+            throw new UnsupportedOperationException("ServletContext access not supported in this proxy");
+        }
+
+        public long getContentLengthLong() {
+            return getContentLength();
+        }
+
+        public jakarta.servlet.DispatcherType getDispatcherType() {
+            return jakarta.servlet.DispatcherType.REQUEST;
+        }
+
+        public String changeSessionId() {
+            throw new UnsupportedOperationException("Session ID change not supported");
+        }
+
+        public jakarta.servlet.http.HttpServletMapping getHttpServletMapping() {
+            throw new UnsupportedOperationException("Servlet mapping not supported");
+        }
     }
 
     public class SessionProxy extends AbstractSession {
@@ -517,6 +558,10 @@ public final class JXPathCocoonContexts implements Contextualizable, ThreadSafe 
             return this.delegate.getInitParameter(name);
         }
 
+        public boolean setInitParameter(String name, String value) {
+            return false;
+        }
+
         public InputStream getResourceAsStream(String path) {
             return this.delegate.getResourceAsStream(path);
         }
@@ -531,6 +576,179 @@ public final class JXPathCocoonContexts implements Contextualizable, ThreadSafe 
 
         public void log(String arg0) {
             this.delegate.log(arg0);
+        }
+
+        // Jakarta Servlet 5.0 listener support - not supported by Cocoon Context
+        public <T extends java.util.EventListener> T createListener(Class<T> clazz) throws jakarta.servlet.ServletException {
+            throw new UnsupportedOperationException("Listener creation not supported");
+        }
+
+        public void addListener(Class<? extends java.util.EventListener> listenerClass) {
+            throw new UnsupportedOperationException("Listener registration not supported");
+        }
+
+        public <T extends java.util.EventListener> void addListener(T listener) {
+            throw new UnsupportedOperationException("Listener registration not supported");
+        }
+
+        public void addListener(String className) {
+            throw new UnsupportedOperationException("Listener registration not supported");
+        }
+
+        public java.util.Set<jakarta.servlet.SessionTrackingMode> getEffectiveSessionTrackingModes() {
+            return java.util.Collections.emptySet();
+        }
+
+        public java.util.Set<jakarta.servlet.SessionTrackingMode> getDefaultSessionTrackingModes() {
+            return java.util.Collections.emptySet();
+        }
+
+        public void setSessionTrackingModes(java.util.Set<jakarta.servlet.SessionTrackingMode> modes) {
+            throw new UnsupportedOperationException("Session tracking mode configuration not supported");
+        }
+
+        public jakarta.servlet.SessionCookieConfig getSessionCookieConfig() {
+            throw new UnsupportedOperationException("Session cookie configuration not supported");
+        }
+
+        public void declareRoles(String... roleNames) {
+            // No-op
+        }
+
+        public String getVirtualServerName() {
+            return null;
+        }
+
+        public int getSessionTimeout() {
+            return 30;
+        }
+
+        public void setSessionTimeout(int sessionTimeout) {
+            // No-op
+        }
+
+        public String getRequestCharacterEncoding() {
+            return null;
+        }
+
+        public void setRequestCharacterEncoding(String encoding) {
+            // No-op
+        }
+
+        public String getResponseCharacterEncoding() {
+            return null;
+        }
+
+        public void setResponseCharacterEncoding(String encoding) {
+            // No-op
+        }
+
+        public java.util.Map<String, ? extends jakarta.servlet.FilterRegistration> getFilterRegistrations() {
+            return java.util.Collections.emptyMap();
+        }
+
+        public jakarta.servlet.FilterRegistration getFilterRegistration(String filterName) {
+            return null;
+        }
+
+        public jakarta.servlet.ServletRegistration getServletRegistration(String servletName) {
+            return null;
+        }
+
+        public java.util.Map<String, ? extends jakarta.servlet.ServletRegistration> getServletRegistrations() {
+            return java.util.Collections.emptyMap();
+        }
+
+        public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
+            throw new UnsupportedOperationException("Filter registration not supported");
+        }
+
+        public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, jakarta.servlet.Filter filter) {
+            throw new UnsupportedOperationException("Filter registration not supported");
+        }
+
+        public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, Class<? extends jakarta.servlet.Filter> filterClass) {
+            throw new UnsupportedOperationException("Filter registration not supported");
+        }
+
+        public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, String className) {
+            throw new UnsupportedOperationException("Servlet registration not supported");
+        }
+
+        public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, jakarta.servlet.Servlet servlet) {
+            throw new UnsupportedOperationException("Servlet registration not supported");
+        }
+
+        public jakarta.servlet.ServletRegistration.Dynamic addServlet(String servletName, Class<? extends jakarta.servlet.Servlet> servletClass) {
+            throw new UnsupportedOperationException("Servlet registration not supported");
+        }
+
+        public jakarta.servlet.ServletRegistration.Dynamic addJspFile(String servletName, String jspFile) {
+            throw new UnsupportedOperationException("JSP registration not supported");
+        }
+
+        public <T extends jakarta.servlet.Filter> T createFilter(Class<T> clazz) throws jakarta.servlet.ServletException {
+            throw new UnsupportedOperationException("Filter creation not supported");
+        }
+
+        public <T extends jakarta.servlet.Servlet> T createServlet(Class<T> clazz) throws jakarta.servlet.ServletException {
+            throw new UnsupportedOperationException("Servlet creation not supported");
+        }
+
+        public java.util.Set<String> getResourcePaths(String path) {
+            return java.util.Collections.emptySet();
+        }
+
+        public ClassLoader getClassLoader() {
+            return Thread.currentThread().getContextClassLoader();
+        }
+
+        public int getMajorVersion() {
+            return 5;
+        }
+
+        public int getMinorVersion() {
+            return 0;
+        }
+
+        public int getEffectiveMajorVersion() {
+            return 5;
+        }
+
+        public int getEffectiveMinorVersion() {
+            return 0;
+        }
+
+        public String getServerInfo() {
+            return "Apache Cocoon 2.3";
+        }
+
+        public String getServletContextName() {
+            return "Cocoon";
+        }
+
+        public jakarta.servlet.descriptor.JspConfigDescriptor getJspConfigDescriptor() {
+            return null;
+        }
+
+        public java.util.Enumeration<String> getInitParameterNames() {
+            return java.util.Collections.emptyEnumeration();
+        }
+
+        public java.util.Enumeration<String> getServletNames() {
+            return java.util.Collections.emptyEnumeration();
+        }
+
+        public java.util.Enumeration<jakarta.servlet.Servlet> getServlets() {
+            return java.util.Collections.emptyEnumeration();
+        }
+
+        public jakarta.servlet.Servlet getServlet(String name) {
+            return null;
+        }
+
+        public String getContextPath() {
+            return "";
         }
     }
 }
