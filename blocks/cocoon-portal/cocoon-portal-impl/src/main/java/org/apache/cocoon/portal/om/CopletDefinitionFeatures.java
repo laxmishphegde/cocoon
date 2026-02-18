@@ -16,7 +16,6 @@
  */
 package org.apache.cocoon.portal.om;
 
-import org.apache.commons.lang3.BooleanUtils;
 
 /**
  * This class contains constants and utility methods for the standard features
@@ -88,10 +87,10 @@ public final class CopletDefinitionFeatures {
     }
 
     public static void setSizable(CopletDefinition data, boolean value) {
-        data.setAttribute(ATTRIBUTE_SIZABLE, BooleanUtils.toBooleanObject(value));
+        data.setAttribute(ATTRIBUTE_SIZABLE, Boolean.valueOf(value));
     }
 
     public static void setMandatory(CopletDefinition data, boolean value) {
-        data.setAttribute(ATTRIBUTE_MANDATORY, BooleanUtils.toBooleanObject(value));
+        data.setAttribute(ATTRIBUTE_MANDATORY, Boolean.valueOf(value));
     }
 }
