@@ -196,6 +196,22 @@ public abstract class AbstractRepository extends AbstractLogEnabled
         return delegate.getDescriptorKeys();
     }
 
+    public javax.jcr.Value getDescriptorValue(String key) {
+        return delegate.getDescriptorValue(key);
+    }
+
+    public javax.jcr.Value[] getDescriptorValues(String key) {
+        return delegate.getDescriptorValues(key);
+    }
+
+    public boolean isSingleValueDescriptor(String key) {
+        return delegate.isSingleValueDescriptor(key);
+    }
+
+    public boolean isStandardDescriptor(String key) {
+        return delegate.isStandardDescriptor(key);
+    }
+
     public Session login()
     throws LoginException, NoSuchWorkspaceException, RepositoryException {
         Session session = getCachedSession(null);

@@ -19,6 +19,7 @@ package org.apache.cocoon.jcr;
 import org.apache.avalon.framework.configuration.Configuration;
 import org.apache.avalon.framework.configuration.ConfigurationException;
 import org.apache.cocoon.components.source.SourceUtil;
+import org.apache.commons.lang3.JavaVersion;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.excalibur.source.Source;
 import org.apache.excalibur.source.SourceResolver;
@@ -54,7 +55,7 @@ public class JackrabbitRepository extends AbstractRepository {
     public void configure(Configuration config) throws ConfigurationException {
         super.configure(config);
         // Java VM must be at least 1.4
-        if (SystemUtils.isJavaVersionAtLeast(140) == false) {
+        if (!SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_4)) {
             String message = "The jcr block needs at least a java VM version 1.4 to run properly. Please update to a newer java or exclude the jcr block from your Cocoon block configuration."; 
             getLogger().error(message);
             throw new ConfigurationException(message);
