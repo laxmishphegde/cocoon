@@ -460,4 +460,21 @@ class DummyTextMessage implements TextMessage {
         throw new JMSException("Not implemented!");
     }
 
+    @SuppressWarnings("rawtypes")
+    public boolean isBodyAssignableTo(Class c) throws JMSException {
+        throw new JMSException("Not implemented!");
+    }
+
+    public <T> T getBody(Class<T> c) throws JMSException {
+        throw new JMSException("Not implemented!");
+    }
+
+    public long getJMSDeliveryTime() throws JMSException {
+        throw new JMSException("Not implemented!");
+    }
+
+    public void setJMSDeliveryTime(long deliveryTime) throws JMSException {
+        throw new JMSException("Not implemented!");
+    }
+
 }

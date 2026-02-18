@@ -24,7 +24,6 @@ import jakarta.jms.Message;
 import jakarta.jms.Session;
 import jakarta.jms.TextMessage;
 
-import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.cocoon.BaseSpringTest;
 import org.apache.cocoon.components.jms.AbstractMessageListener;
 import org.apache.cocoon.jms.SimpleMessageListener;
@@ -89,8 +88,7 @@ public abstract class BaseMessageListenerTest extends BaseSpringTest {
 
         List messages = consumer.getMessages();
         assertEquals(1, messages.size());
-        assertEquals("This is a message", ((ActiveMQTextMessage) messages
-                .get(0)).getText());
+        assertEquals("This is a message", ((TextMessage) messages.get(0)).getText());
         
         consumer.destroy();
     }

@@ -17,10 +17,11 @@
 package org.apache.cocoon.jms;
 
 import jakarta.jms.JMSException;
-import jakarta.jms.TextMessage;
+import jakarta.jms.Message;
+import jakarta.jms.Session;
 
-import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.cocoon.components.jms.AbstractMessagePublisher;
+import org.springframework.jms.core.MessageCreator;
 
 /**
  * Provides a simple text message publisher for test reasons.
@@ -29,12 +30,14 @@ public final class SimpleTextMessagePublisher extends AbstractMessagePublisher {
 
     /**
      * Publishes a simple text message.
-     * 
+     *
      * @throws JMSException In case, publish fails.
      */
-    public void publish(String text) throws JMSException {
-        TextMessage message = new ActiveMQTextMessage();
-        message.setText(text);
-        super.publishMessage(message);
+    public void publish(final String text) throws JMSException {
+        this.template.send(this.destination, new MessageCreator() {
+            public Message createMessage(Session session) throws JMSException {
+                return session.createTextMessage(text);
+            }
+        });
     }
 }

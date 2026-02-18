@@ -20,8 +20,8 @@ import java.util.List;
 
 import jakarta.jms.Destination;
 import jakarta.jms.JMSException;
+import jakarta.jms.TextMessage;
 
-import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.cocoon.BaseSpringTest;
 import org.apache.cocoon.components.jms.AbstractMessageListener;
 import org.apache.cocoon.jms.SimpleMessageListener;
@@ -76,8 +76,7 @@ public abstract class BaseMessagePublisherTest extends BaseSpringTest {
 
         List messages = consumer.getMessages();
         assertEquals(1, messages.size());
-        assertEquals("A simple text message", ((ActiveMQTextMessage) messages
-                .get(0)).getText());
+        assertEquals("A simple text message", ((TextMessage) messages.get(0)).getText());
         
         consumer.destroy();
     }
