@@ -476,6 +476,35 @@ public class Debugger extends AbstractLogEnabled
             return super.getParameterValues(name);
         }
 
+        public jakarta.servlet.AsyncContext getAsyncContext() {
+            return this.req.getAsyncContext();
+        }
+
+        public boolean isAsyncStarted() {
+            return this.req.isAsyncStarted();
+        }
+
+        public boolean isAsyncSupported() {
+            return this.req.isAsyncSupported();
+        }
+
+        public jakarta.servlet.AsyncContext startAsync() throws IllegalStateException {
+            return this.req.startAsync();
+        }
+
+        public jakarta.servlet.AsyncContext startAsync(jakarta.servlet.ServletRequest servletRequest,
+                jakarta.servlet.ServletResponse servletResponse) throws IllegalStateException {
+            return this.req.startAsync(servletRequest, servletResponse);
+        }
+
+        public long getContentLengthLong() {
+            return this.req.getContentLengthLong();
+        }
+
+        public jakarta.servlet.ServletContext getServletContext() {
+            return this.req.getServletContext();
+        }
+
         /**
          * @see org.apache.cocoon.environment.Request#getQueryString()
          */
