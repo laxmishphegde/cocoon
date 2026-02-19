@@ -38,11 +38,6 @@ import org.apache.commons.logging.impl.SimpleLog;
  * @version $Id$
  */
 public class Deprecation {
-    
-    /**
-     * The deprecation logger.
-     */
-    public static final Log logger = new LoggerWrapper(getLog());
 
     private static Log getLog() {
         SimpleLog log = new SimpleLog("cocoon.deprecation");
@@ -123,6 +118,10 @@ public class Deprecation {
     private static final int ERROR_VALUE = LogLevel.ERROR.getValue();
     private static final int FATAL_VALUE = LogLevel.FATAL.getValue();
 
+    /**
+     * The deprecation logger.
+     */
+    public static final Log logger = new LoggerWrapper(getLog());
 
     public static void setLogger(Log newLogger) {
         // Note: the "logger" attribute is not of type LoggerWrapper so that it appears
