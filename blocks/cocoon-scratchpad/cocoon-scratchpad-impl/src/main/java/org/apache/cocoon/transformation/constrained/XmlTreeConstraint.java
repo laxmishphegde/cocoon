@@ -62,14 +62,14 @@ public class XmlTreeConstraint {
 
 		this.allowedMyUriStackEnd = Arrays.asList(allowedMyUriStackEnd);
 		this.allowedGlobalStackEnd = Arrays.asList(allowedGlobalStackEnd);
-		this.isMyUriRequired = BooleanUtils.toBooleanObject(isMyUriRequired);
+		this.isMyUriRequired = Boolean.valueOf(isMyUriRequired);
 	}
 
 
 	public XmlTreeConstraint(String[] allowedMyUriStackEnd,
 			boolean isMyUriRequired) {
 		this.allowedMyUriStackEnd = Arrays.asList(allowedMyUriStackEnd);
-		this.isMyUriRequired = BooleanUtils.toBooleanObject(isMyUriRequired);
+		this.isMyUriRequired = Boolean.valueOf(isMyUriRequired);
 	}
 
 

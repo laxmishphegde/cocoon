@@ -169,7 +169,7 @@ public abstract class AbstractConstrainedTransformer
 
 			while (constraintsIter.hasNext()) {
 				if (((XmlTreeConstraint) constraintsIter.next())
-						.isAllowed(BooleanUtils.toBooleanObject(isMyUri), this.myUriOpenElements,
+						.isAllowed(Boolean.valueOf(isMyUri), this.myUriOpenElements,
 						this.globalOpenElements)) {
 					return;
 				}
@@ -205,7 +205,7 @@ public abstract class AbstractConstrainedTransformer
 					currentConstraint =
 							(XmlTreeConstraint) constraintsIter.next();
 					isAllowed =
-							currentConstraint.isAllowed(BooleanUtils.toBooleanObject(isMyUri),
+							currentConstraint.isAllowed(Boolean.valueOf(isMyUri),
 							this.myUriOpenElements,
 							this.globalOpenElements);
 

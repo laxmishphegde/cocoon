@@ -654,6 +654,16 @@ public class CocoonFilterGeneratorImpl implements Filter {
         public void write(byte[] b, int off, int len) throws IOException {
             stream.write(b, off, len);
         }
+
+        @Override
+        public boolean isReady() {
+            return true;
+        }
+
+        @Override
+        public void setWriteListener(jakarta.servlet.WriteListener writeListener) {
+            throw new UnsupportedOperationException("setWriteListener not supported");
+        }
     }
 }
 
