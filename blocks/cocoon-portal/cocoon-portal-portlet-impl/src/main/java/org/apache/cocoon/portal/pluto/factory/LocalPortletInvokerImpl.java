@@ -27,7 +27,7 @@ import javax.portlet.PortletException;
 import javax.portlet.PortletRequest;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-import jakarta.servlet.ServletConfig;
+import javax.servlet.ServletConfig;
 
 import org.apache.avalon.framework.activity.Initializable;
 import org.apache.avalon.framework.container.ContainerUtil;
@@ -148,9 +148,9 @@ implements PortletInvoker, Serviceable, Initializable {
         }
         PortletContext portletContext;
         PortletConfig portletConfig;
-        portletContext = PortletObjectAccess.getPortletContext(this.servletConfig.getServletContext(),
+        portletContext = PortletObjectAccess.getPortletContext((javax.servlet.ServletContext)(Object)this.servletConfig.getServletContext(),
                 portletDefinition.getPortletApplicationDefinition());
-        portletConfig = PortletObjectAccess.getPortletConfig(this.servletConfig, 
+        portletConfig = PortletObjectAccess.getPortletConfig((javax.servlet.ServletConfig)(Object)this.servletConfig,
                 portletContext,
                 portletDefinition);
         this.portlet.init(portletConfig);

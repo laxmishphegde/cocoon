@@ -34,8 +34,8 @@ import javax.portlet.PortletSession;
 import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 
 import org.apache.avalon.framework.container.ContainerUtil;
 import org.apache.avalon.framework.parameters.ParameterException;
@@ -98,28 +98,28 @@ public class FactoryManagerServiceImpl
         }
 
         /**
-         * @see jakarta.servlet.ServletConfig#getInitParameter(java.lang.String)
+         * @see javax.servlet.ServletConfig#getInitParameter(java.lang.String)
          */
         public String getInitParameter(String arg0) {
             return this.servletContext.getInitParameter(arg0);
         }
 
         /**
-         * @see jakarta.servlet.ServletConfig#getInitParameterNames()
+         * @see javax.servlet.ServletConfig#getInitParameterNames()
          */
         public Enumeration getInitParameterNames() {
             return this.servletContext.getInitParameterNames();
         }
 
         /**
-         * @see jakarta.servlet.ServletConfig#getServletContext()
+         * @see javax.servlet.ServletConfig#getServletContext()
          */
         public ServletContext getServletContext() {
             return this.servletContext;
         }
 
         /**
-         * @see jakarta.servlet.ServletConfig#getServletName()
+         * @see javax.servlet.ServletConfig#getServletName()
          */
         public String getServletName() {
             return this.servletContext.getServletContextName();
@@ -139,7 +139,7 @@ public class FactoryManagerServiceImpl
     public void initialize()
     throws Exception {
         super.initialize();
-        final ServletContext servletContext = this.portalService.getRequestContext().getServletContext();
+        final ServletContext servletContext = (javax.servlet.ServletContext)(Object)this.portalService.getRequestContext().getServletContext();
         this.servletConfig = new PortalServletConfig(servletContext);
         final Map factories = new HashMap();
 
@@ -188,7 +188,7 @@ public class FactoryManagerServiceImpl
             ContainerUtil.service(factory, this.manager);
             ContainerUtil.initialize(factory);
 
-            factory.init(this.servletConfig, Collections.EMPTY_MAP);
+            factory.init((javax.servlet.ServletConfig)(Object)this.servletConfig, Collections.EMPTY_MAP);
 
             this.factoryMap.put(me.getKey(), factory);
 

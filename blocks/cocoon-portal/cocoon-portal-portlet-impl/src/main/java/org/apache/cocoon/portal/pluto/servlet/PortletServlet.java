@@ -85,9 +85,9 @@ public class PortletServlet extends HttpServlet {
             PortletDefinitionCtrl portletDefCtrl = (PortletDefinitionCtrl)ControllerObjectAccess.get(pd);
             portletDefCtrl.setPortletClassLoader(Thread.currentThread().getContextClassLoader());
     
-            info.context = PortletObjectAccess.getPortletContext(this.servletConfig.getServletContext(),
+            info.context = PortletObjectAccess.getPortletContext((javax.servlet.ServletContext)(Object)this.servletConfig.getServletContext(),
                                                                    pd.getPortletApplicationDefinition());
-            info.config = PortletObjectAccess.getPortletConfig(this.servletConfig, 
+            info.config = PortletObjectAccess.getPortletConfig((javax.servlet.ServletConfig)(Object)this.servletConfig,
                                                                info.context,
                                                                pd);
 
@@ -247,33 +247,33 @@ public class PortletServlet extends HttpServlet {
         InternalPortletRequest internalPortletRequest = 
         CoreUtils.getInternalRequest(portletRequest);
 
-        internalPortletRequest.lateInit(servletRequest);
+        internalPortletRequest.lateInit((javax.servlet.http.HttpServletRequest)(Object)servletRequest);
     }
 
     protected void prepareRenderRequest(RenderRequest portletRequest,
                                       HttpServletRequest servletRequest) {
-        InternalPortletRequest internalPortletRequest = 
+        InternalPortletRequest internalPortletRequest =
         CoreUtils.getInternalRequest(portletRequest);
 
-        internalPortletRequest.lateInit(servletRequest);
+        internalPortletRequest.lateInit((javax.servlet.http.HttpServletRequest)(Object)servletRequest);
     }
 
     protected void prepareRenderResponse(RenderResponse portletResponse,
                                        HttpServletRequest servletRequest,
                                        HttpServletResponse servletResponse) {
-        InternalPortletResponse internalPortletResponse = 
+        InternalPortletResponse internalPortletResponse =
         CoreUtils.getInternalResponse(portletResponse);
 
-        internalPortletResponse.lateInit(servletRequest, servletResponse);
+        internalPortletResponse.lateInit((javax.servlet.http.HttpServletRequest)(Object)servletRequest, (javax.servlet.http.HttpServletResponse)(Object)servletResponse);
     }
 
     protected void prepareActionResponse(ActionResponse portletResponse,
                                        HttpServletRequest servletRequest,
                                        HttpServletResponse servletResponse) {
-        InternalPortletResponse internalPortletResponse = 
+        InternalPortletResponse internalPortletResponse =
         CoreUtils.getInternalResponse(portletResponse);
 
-        internalPortletResponse.lateInit(servletRequest, servletResponse);
+        internalPortletResponse.lateInit((javax.servlet.http.HttpServletRequest)(Object)servletRequest, (javax.servlet.http.HttpServletResponse)(Object)servletResponse);
     }
 
     protected final static class PortletInfo {

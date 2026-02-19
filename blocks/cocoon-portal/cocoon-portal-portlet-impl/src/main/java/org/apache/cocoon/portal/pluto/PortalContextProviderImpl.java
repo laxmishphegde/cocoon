@@ -22,7 +22,7 @@ import java.util.Vector;
 
 import javax.portlet.PortletMode;
 import javax.portlet.WindowState;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.cocoon.Constants;
 import org.apache.cocoon.portal.RequestContext;
@@ -144,7 +144,7 @@ implements PortalContextProvider {
      * Initialize some infos.
      */
     protected void init(final RequestContext requestContext) {
-        final HttpServletRequest request = requestContext.getRequest();
+        final HttpServletRequest request = (javax.servlet.http.HttpServletRequest)(Object)requestContext.getRequest();
         final String hostName   = request.getServerName();
         final String contextRoot = request.getContextPath();
         final int hostPortHTTP  = request.getServerPort();

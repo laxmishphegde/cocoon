@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.cocoon.portal.event.Receiver;
 import org.apache.cocoon.portal.event.user.UserEvent;
@@ -65,7 +65,7 @@ public class TestProfileManager extends GroupBasedProfileManager {
                 // display the portlets specified with the parameter. Otherwise
                 // we show all portlets
                 final List portletNames = new ArrayList();
-                final HttpServletRequest r = this.portalService.getRequestContext().getRequest();
+                final HttpServletRequest r = (javax.servlet.http.HttpServletRequest)(Object)this.portalService.getRequestContext().getRequest();
                 final String[] values = r.getParameterValues("portletName");
                 if ( values != null && values.length > 0 ) {
                     for(int i=0; i<values.length; i++) {
@@ -125,7 +125,7 @@ public class TestProfileManager extends GroupBasedProfileManager {
         if ( event instanceof UserIsAccessingEvent ) {
             if ( "test".equals(event.getPortalUser().getUserName()) ) {
                 final List portletNames = new ArrayList();
-                final HttpServletRequest r = this.portalService.getRequestContext().getRequest();
+                final HttpServletRequest r = (javax.servlet.http.HttpServletRequest)(Object)this.portalService.getRequestContext().getRequest();
                 final String[] values = r.getParameterValues("portletName");
                 if ( values != null && values.length > 0 ) {
                     for(int i=0; i<values.length; i++) {

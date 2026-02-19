@@ -18,7 +18,7 @@ package org.apache.cocoon.portal.pluto.factory;
 
 import java.security.Principal;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.cocoon.portal.om.PortalUser;
 import org.apache.pluto.om.window.PortletWindow;

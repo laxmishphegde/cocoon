@@ -30,7 +30,7 @@ import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import jakarta.servlet.ServletContext;
+import javax.servlet.ServletContext;
 
 import org.apache.avalon.framework.parameters.ParameterException;
 import org.apache.avalon.framework.parameters.Parameterizable;
@@ -182,7 +182,7 @@ public class PortletDefinitionRegistryImpl
         }
         super.initialize();
 
-        this.servletContext = this.portalService.getRequestContext().getServletContext();
+        this.servletContext = (javax.servlet.ServletContext)(Object)this.portalService.getRequestContext().getServletContext();
 
         // get our context path
         String baseWMDir = this.servletContext.getRealPath("");

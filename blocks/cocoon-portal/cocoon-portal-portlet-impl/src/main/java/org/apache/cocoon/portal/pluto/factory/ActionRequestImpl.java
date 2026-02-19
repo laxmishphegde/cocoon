@@ -18,7 +18,7 @@ package org.apache.cocoon.portal.pluto.factory;
 
 import java.security.Principal;
 
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.cocoon.portal.om.PortalUser;
 import org.apache.pluto.om.window.PortletWindow;
@@ -74,5 +74,33 @@ public class ActionRequestImpl
             return true;
         }
         return super.isUserInRole(role);
+    }
+
+    /**
+     * Override to bridge javax.servlet.ServletException incompatibility between
+     * javax.servlet.http.HttpServletRequest and javax.portlet.ClientDataRequest.
+     */
+    @Override
+    public java.util.Collection<javax.servlet.http.Part> getParts()
+            throws java.io.IOException {
+        try {
+            return super.getParts();
+        } catch (javax.servlet.ServletException e) {
+            throw new java.io.IOException(e);
+        }
+    }
+
+    /**
+     * Override to bridge javax.servlet.ServletException incompatibility between
+     * javax.servlet.http.HttpServletRequest and javax.portlet.ClientDataRequest.
+     */
+    @Override
+    public javax.servlet.http.Part getPart(String name)
+            throws java.io.IOException {
+        try {
+            return super.getPart(name);
+        } catch (javax.servlet.ServletException e) {
+            throw new java.io.IOException(e);
+        }
     }
 }
