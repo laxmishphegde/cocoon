@@ -116,7 +116,7 @@ public class ScriptableResult extends ScriptableObject {
             index++;
         }
         put("rowCount", this, new Integer(index));
-        put("isLimitedByMaxRows", this, BooleanUtils.toBooleanObject(isLimited));
+        put("isLimitedByMaxRows", this, Boolean.valueOf(isLimited));
     }
 }
 
