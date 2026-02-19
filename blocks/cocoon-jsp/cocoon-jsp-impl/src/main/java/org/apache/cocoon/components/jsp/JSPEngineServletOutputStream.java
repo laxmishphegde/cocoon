@@ -23,6 +23,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
 import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
 
 /**
  * Stub implementation of ServletOutputStream.
@@ -43,6 +44,13 @@ public final class JSPEngineServletOutputStream extends ServletOutputStream {
     
     public void write(int b) throws IOException  {
         this.output.write(b);
+    }
+
+    public boolean isReady() {
+        return true;
+    }
+
+    public void setWriteListener(WriteListener writeListener) {
     }
     
     final byte[] toByteArray() {

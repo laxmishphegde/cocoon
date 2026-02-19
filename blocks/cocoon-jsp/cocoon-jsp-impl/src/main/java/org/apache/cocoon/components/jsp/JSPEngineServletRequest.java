@@ -19,14 +19,27 @@ package org.apache.cocoon.components.jsp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Locale;
+import java.util.Map;
 
+import jakarta.servlet.AsyncContext;
+import jakarta.servlet.DispatcherType;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletMapping;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpUpgradeHandler;
+import jakarta.servlet.http.Part;
+import jakarta.servlet.http.PushBuilder;
 
 /**
  * Stub implementation of HttpServletRequest.
@@ -107,4 +120,29 @@ public class JSPEngineServletRequest implements HttpServletRequest {
     public String getLocalName() { return request.getLocalName(); }
     public int getLocalPort() { return request.getLocalPort(); }
     public int getRemotePort() { return request.getRemotePort(); }
+
+    // Servlet 3.0 methods
+    public AsyncContext startAsync() throws IllegalStateException { return request.startAsync(); }
+    public AsyncContext startAsync(ServletRequest req, ServletResponse res) throws IllegalStateException { return request.startAsync(req, res); }
+    public boolean isAsyncStarted() { return request.isAsyncStarted(); }
+    public boolean isAsyncSupported() { return request.isAsyncSupported(); }
+    public AsyncContext getAsyncContext() { return request.getAsyncContext(); }
+    public DispatcherType getDispatcherType() { return request.getDispatcherType(); }
+    public ServletContext getServletContext() { return request.getServletContext(); }
+    public boolean authenticate(HttpServletResponse response) throws IOException, ServletException { return request.authenticate(response); }
+    public void login(String username, String password) throws ServletException { request.login(username, password); }
+    public void logout() throws ServletException { request.logout(); }
+    public Collection<Part> getParts() throws IOException, ServletException { return request.getParts(); }
+    public Part getPart(String name) throws IOException, ServletException { return request.getPart(name); }
+
+    // Servlet 3.1 methods
+    public String changeSessionId() { return request.changeSessionId(); }
+    public long getContentLengthLong() { return request.getContentLengthLong(); }
+    public <T extends HttpUpgradeHandler> T upgrade(Class<T> httpUpgradeHandlerClass) throws IOException, ServletException { return request.upgrade(httpUpgradeHandlerClass); }
+
+    // Servlet 4.0 methods
+    public HttpServletMapping getHttpServletMapping() { return request.getHttpServletMapping(); }
+    public PushBuilder newPushBuilder() { return null; }
+    public Map<String, String> getTrailerFields() { return request.getTrailerFields(); }
+    public boolean isTrailerFieldsReady() { return request.isTrailerFieldsReady(); }
 }

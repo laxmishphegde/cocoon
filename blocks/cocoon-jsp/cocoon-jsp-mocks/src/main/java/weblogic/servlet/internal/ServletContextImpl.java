@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,12 +18,22 @@ package weblogic.servlet.internal;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.EnumSet;
 import java.util.Enumeration;
+import java.util.EventListener;
+import java.util.Map;
 import java.util.Set;
 
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterRegistration;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRegistration;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.SessionTrackingMode;
+import jakarta.servlet.descriptor.JspConfigDescriptor;
 
 /**
  * **********************************************************************
@@ -36,10 +46,10 @@ import jakarta.servlet.ServletContext;
  *  This class is created by hand, not automatically.
  *
  * **********************************************************************
- * 
+ *
  * @version $Id$
  */
- 
+
 public class ServletContextImpl implements ServletContext{
 
     /** @deprecated The method ServletContextImpl.getServlets() overrides a
@@ -60,7 +70,7 @@ public class ServletContextImpl implements ServletContext{
     public URL getResource(String string){
         return null;
     }
-    
+
     public void setupGetResourcePaths(Set resourcePaths){
     }
 
@@ -78,7 +88,7 @@ public class ServletContextImpl implements ServletContext{
 
     public void removeAttribute(String string){
     }
-    
+
     public void log(String string, Throwable t){
     }
 
@@ -122,7 +132,7 @@ public class ServletContextImpl implements ServletContext{
     public RequestDispatcher getRequestDispatcher(String uri){
         return null;
     }
-    
+
     public int getMajorVersion(){
         return -1;
     }
@@ -146,7 +156,8 @@ public class ServletContextImpl implements ServletContext{
         return null;
     }
 
-    public void setInitParameter(String paramName, String paramValue){
+    public boolean setInitParameter(String paramName, String paramValue){
+        return false;
     }
 
     public Object getAttribute(String string){
@@ -160,12 +171,143 @@ public class ServletContextImpl implements ServletContext{
     public String getServletContextName() {
         return null;
     }
-    
+
+    public String getContextPath() {
+        return null;
+    }
+
     public InputStream getResourceAsStream(String string){
         return null;
     }
-    
+
     public Enumeration getInitParameterNames(){
+        return null;
+    }
+
+    // Servlet 3.0 methods
+    public ServletRegistration.Dynamic addServlet(String servletName, String className) {
+        return null;
+    }
+
+    public ServletRegistration.Dynamic addServlet(String servletName, Servlet servlet) {
+        return null;
+    }
+
+    public ServletRegistration.Dynamic addServlet(String servletName, Class<? extends Servlet> servletClass) {
+        return null;
+    }
+
+    public <T extends Servlet> T createServlet(Class<T> clazz) throws ServletException {
+        return null;
+    }
+
+    public ServletRegistration getServletRegistration(String servletName) {
+        return null;
+    }
+
+    public Map<String, ? extends ServletRegistration> getServletRegistrations() {
+        return null;
+    }
+
+    public FilterRegistration.Dynamic addFilter(String filterName, String className) {
+        return null;
+    }
+
+    public FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
+        return null;
+    }
+
+    public FilterRegistration.Dynamic addFilter(String filterName, Class<? extends Filter> filterClass) {
+        return null;
+    }
+
+    public <T extends Filter> T createFilter(Class<T> clazz) throws ServletException {
+        return null;
+    }
+
+    public FilterRegistration getFilterRegistration(String filterName) {
+        return null;
+    }
+
+    public Map<String, ? extends FilterRegistration> getFilterRegistrations() {
+        return null;
+    }
+
+    public SessionCookieConfig getSessionCookieConfig() {
+        return null;
+    }
+
+    public void setSessionTrackingModes(Set<SessionTrackingMode> sessionTrackingModes) {
+    }
+
+    public Set<SessionTrackingMode> getDefaultSessionTrackingModes() {
+        return EnumSet.noneOf(SessionTrackingMode.class);
+    }
+
+    public Set<SessionTrackingMode> getEffectiveSessionTrackingModes() {
+        return EnumSet.noneOf(SessionTrackingMode.class);
+    }
+
+    public void addListener(String className) {
+    }
+
+    public <T extends EventListener> void addListener(T t) {
+    }
+
+    public void addListener(Class<? extends EventListener> listenerClass) {
+    }
+
+    public <T extends EventListener> T createListener(Class<T> clazz) throws ServletException {
+        return null;
+    }
+
+    public JspConfigDescriptor getJspConfigDescriptor() {
+        return null;
+    }
+
+    public ClassLoader getClassLoader() {
+        return null;
+    }
+
+    public void declareRoles(String... roleNames) {
+    }
+
+    public int getEffectiveMajorVersion() {
+        return -1;
+    }
+
+    public int getEffectiveMinorVersion() {
+        return -1;
+    }
+
+    // Servlet 3.1 methods
+    public String getVirtualServerName() {
+        return null;
+    }
+
+    // Servlet 4.0 methods
+    public int getSessionTimeout() {
+        return -1;
+    }
+
+    public void setSessionTimeout(int sessionTimeout) {
+    }
+
+    public String getRequestCharacterEncoding() {
+        return null;
+    }
+
+    public void setRequestCharacterEncoding(String encoding) {
+    }
+
+    public String getResponseCharacterEncoding() {
+        return null;
+    }
+
+    public void setResponseCharacterEncoding(String encoding) {
+    }
+
+    public ServletRegistration.Dynamic addJspFile(String servletName, String jspFile) {
         return null;
     }
 }

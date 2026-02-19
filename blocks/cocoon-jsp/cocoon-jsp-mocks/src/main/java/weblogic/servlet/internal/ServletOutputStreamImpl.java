@@ -19,6 +19,7 @@ package weblogic.servlet.internal;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
 
 /**
  * **********************************************************************
@@ -65,6 +66,13 @@ public class ServletOutputStreamImpl extends ServletOutputStream {
     }
 
     public void write(int b) throws IOException {
+    }
+
+    public boolean isReady() {
+        return true;
+    }
+
+    public void setWriteListener(WriteListener writeListener) {
     }
 
     public void setupClearContents () {

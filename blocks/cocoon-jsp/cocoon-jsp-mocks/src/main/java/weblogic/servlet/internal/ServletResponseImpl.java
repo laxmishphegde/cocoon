@@ -17,6 +17,8 @@
 package weblogic.servlet.internal;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
@@ -191,6 +193,25 @@ public class ServletResponseImpl implements HttpServletResponse {
     }
 
     public void setCharacterEncoding(String arg0) {
+    }
+
+    public String getHeader(String name) {
+        return null;
+    }
+
+    public Collection<String> getHeaders(String name) {
+        return Collections.emptyList();
+    }
+
+    public Collection<String> getHeaderNames() {
+        return Collections.emptyList();
+    }
+
+    public int getStatus() {
+        return 0;
+    }
+
+    public void setContentLengthLong(long len) {
     }
 
 }

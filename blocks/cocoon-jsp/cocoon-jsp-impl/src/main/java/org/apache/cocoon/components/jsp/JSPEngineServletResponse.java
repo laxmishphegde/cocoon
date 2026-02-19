@@ -18,7 +18,10 @@ package org.apache.cocoon.components.jsp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Locale;
+import java.util.Map;
+import java.util.function.Supplier;
 
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.Cookie;
@@ -132,5 +135,18 @@ public class JSPEngineServletResponse implements HttpServletResponse {
     public boolean isCommitted() { return false; }
     public String getContentType() { return servletResponse.getContentType(); }
     public void setCharacterEncoding(String arg0) { servletResponse.setCharacterEncoding(arg0); }
+
+    // Servlet 3.0 methods
+    public String getHeader(String name) { return servletResponse.getHeader(name); }
+    public Collection<String> getHeaders(String name) { return servletResponse.getHeaders(name); }
+    public Collection<String> getHeaderNames() { return servletResponse.getHeaderNames(); }
+    public int getStatus() { return servletResponse.getStatus(); }
+
+    // Servlet 3.1 methods
+    public void setContentLengthLong(long len) { servletResponse.setContentLengthLong(len); }
+
+    // Servlet 4.0 methods
+    public void setTrailerFields(Supplier<Map<String, String>> supplier) { servletResponse.setTrailerFields(supplier); }
+    public Supplier<Map<String, String>> getTrailerFields() { return servletResponse.getTrailerFields(); }
 
 }
