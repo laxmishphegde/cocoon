@@ -54,7 +54,7 @@ This is a multi-module Maven project with the following structure:
 
 ### Prerequisites
 
-- JDK 1.8 or later (JDK 11 recommended)
+- JDK 21 (required for Jakarta EE 9+ compatibility)
 - Maven 3 (Maven wrapper `mvnw`/`mvnw.cmd` is included - no separate Maven installation required)
 
 ### Build Commands
@@ -114,7 +114,7 @@ The `tools/` directory contains:
 
 ### Running the Application
 
-Start Cocoon with Jetty:
+Start Cocoon with Jetty (requires a completed `./build.sh install` first — `cocoon.sh` serves from `target/cocoon-webapp`):
 
 ```bash
 ./cocoon.sh
@@ -196,6 +196,14 @@ Run tests using Maven:
 # Run tests for a specific module
 cd core/cocoon-core
 mvn test
+
+# Run a single test class
+cd core/cocoon-core
+mvn test -Dtest=MyTestClass
+
+# Run a single test method
+cd core/cocoon-core
+mvn test -Dtest=MyTestClass#myTestMethod
 ```
 
 The `blocks/cocoon-it` module contains integration tests for the framework.
@@ -269,3 +277,5 @@ Apache Cocoon 2.3.1 is fully migrated to Jakarta EE 9+ for JDK 21 compatibility:
 - Missing `cocoon-rcl` artifact: build the `tools/` directory first
 - Out of memory errors: increase heap size in `build.sh` (MAVEN_OPTS)
 - Eclipse setup: Ensure M2_REPO variable points to your local Maven repository (~/.m2/repository)
+- **`cocoon.sh` fails to start / Spring context error on `SessionManager`**: The `cocoon-session-fw-impl` is pulled in transitively via `cocoon-authentication-fw-impl`. Ensure `Deprecation.java` in `core/cocoon-util` declares the `*_VALUE` constants **before** the `logger` field — the `LoggerWrapper` instance field `forbiddenLevel` is initialized at construction time from `ERROR_VALUE`, so if `logger` is declared before the constants, `forbiddenLevel` gets `0` instead of `3`, causing all deprecation `warn()` calls to throw `DeprecationException`.
+- **`cocoon.sh` serves stale content**: The script uses the pre-built `target/cocoon-webapp` directory. If you change block dependencies, re-run `./build.sh install` (with `-P allblocks`) before `./cocoon.sh`.
